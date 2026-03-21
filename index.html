@@ -12,34 +12,24 @@
       })();
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Disha Nikam — Portfolio</title>
-    <meta
-      name="description"
-      content="Disha Nikam — M.S.E. Computer and Information Science at UPenn. AI/ML, full-stack engineering, and research."
-    />
+    <title>Portfolio</title>
+    <meta name="description" content="Personal portfolio site." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/styles.css?v=4" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header">
       <div class="site-header__inner">
-        <a class="logo" href="#">DN</a>
+        <a class="logo" href="#" id="site-logo" aria-label="Home"></a>
         <nav class="nav" aria-label="Primary">
-          <ul class="nav__list">
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
+          <ul class="nav__list" id="nav-list"></ul>
         </nav>
         <button
           type="button"
@@ -63,359 +53,15 @@
       </div>
     </header>
 
-    <main id="main">
-      <section class="hero" aria-labelledby="hero-heading">
-        <div class="hero__grid">
-          <div class="hero__text">
-            <p class="eyebrow">M.S.E. Computer &amp; Information Science · UPenn</p>
-            <h1 id="hero-heading">Hi, I’m Disha Nikam</h1>
-            <p class="hero__lead">
-              I build trustworthy AI systems, full-stack data products, and research-driven tools—from RAG chatbots at scale to
-              agent evaluation frameworks and adaptive learning experiences.
-            </p>
-            <div class="hero__actions">
-              <a class="btn btn--primary" href="#contact">Get in touch</a>
-              <a
-                class="btn btn--ghost"
-                href="assets/disha-nikam-resume.pdf"
-                download="Disha-Nikam-resume.pdf"
-                >Download résumé</a
-              >
-              <a class="btn btn--ghost" href="https://github.com/dishanikam12" target="_blank" rel="noopener noreferrer">GitHub</a>
-              <a class="btn btn--ghost" href="https://www.linkedin.com/in/disha-nikam-239102200/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            </div>
-          </div>
-          <div class="hero__portrait">
-            <figure class="portrait" id="portrait-root">
-              <img
-                class="portrait__img"
-                src="./images/portfolio.jpeg"
-                alt="Portrait of Disha Nikam"
-                width="320"
-                height="320"
-                loading="eager"
-                decoding="async"
-              />
-              <figcaption class="visually-hidden">Disha Nikam</figcaption>
-              <div class="portrait__fallback" id="portrait-fallback" aria-hidden="true">DN</div>
-            </figure>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="about" aria-labelledby="about-heading">
-        <div class="section__inner">
-          <h2 id="about-heading" class="section__title">About</h2>
-          <div class="prose">
-            <p>
-              I’m a graduate student at the <strong>University of Pennsylvania</strong> (GPA 3.70) pursuing an M.S.E. in Computer
-              and Information Science, with experience as a Graduate Research Assistant at the <strong>Han AI Lab</strong> at Penn
-              Medicine. Previously I earned my B.Tech in Computer Science from <strong>PES University</strong> (GPA 9.28/10) in
-              India, with honors including the Professor MRD Scholarship for six consecutive semesters.
-            </p>
-            <p>
-              Professionally, I’ve shipped multilingual speech-enabled RAG systems for public-sector scale, production internal
-              tools at Walmart Global Tech, and analytics work that drove business outcomes. I care about rigorous evaluation,
-              responsible deployment, and interfaces that make complex models usable.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section section--alt" id="experience" aria-labelledby="exp-heading">
-        <div class="section__inner">
-          <h2 id="exp-heading" class="section__title">Experience</h2>
-          <ol class="timeline">
-            <li class="timeline__item">
-              <div class="timeline__meta">
-                <h3 class="timeline__title">Graduate Research Assistant</h3>
-                <p class="timeline__place">Han AI Lab, Penn Medicine · Philadelphia</p>
-                <p class="timeline__date">Jan 2025 – Present</p>
-              </div>
-              <ul class="timeline__bullets">
-                <li>Research at the intersection of AI and medicine with Penn Medicine collaborators.</li>
-              </ul>
-            </li>
-            <li class="timeline__item">
-              <div class="timeline__meta">
-                <h3 class="timeline__title">Technology Consultant</h3>
-                <p class="timeline__place">PwC India · Bangalore</p>
-                <p class="timeline__date">Sept 2024 – Apr 2025</p>
-              </div>
-              <ul class="timeline__bullets">
-                <li>
-                  Architected speech-enabled, multilingual RAG chatbots in Python (10+ languages), serving 500K+ citizens on a
-                  Government of India initiative; cut query turnaround ~40%.
-                </li>
-                <li>
-                  Implemented LLM evaluation, guardrails, hallucination detection, and toxicity filters for enterprise-compliant AI.
-                </li>
-                <li>Containerized solutions with Docker and deployed on Microsoft Azure; reduced deployment time ~60%.</li>
-              </ul>
-            </li>
-            <li class="timeline__item">
-              <div class="timeline__meta">
-                <h3 class="timeline__title">Software Developer Intern</h3>
-                <p class="timeline__place">Walmart Global Tech · Bangalore</p>
-                <p class="timeline__date">Jan 2024 – June 2024</p>
-              </div>
-              <ul class="timeline__bullets">
-                <li>
-                  Built and deployed a production RAG chatbot with a React.js frontend; improved retrieval time ~35% for 40+
-                  users.
-                </li>
-                <li>Used RAGAS metrics to improve context-aware accuracy and retrieval precision over baseline.</li>
-              </ul>
-            </li>
-            <li class="timeline__item">
-              <div class="timeline__meta">
-                <h3 class="timeline__title">Summer Intern</h3>
-                <p class="timeline__place">Big Basket · Bangalore</p>
-                <p class="timeline__date">June 2022 – Aug 2022</p>
-              </div>
-              <ul class="timeline__bullets">
-                <li>Analyzed sales across 12+ categories with Python and SQL to inform pricing and marketing.</li>
-                <li>Recommendations adopted by the business team; improved performance in underperforming segments.</li>
-              </ul>
-            </li>
-            <li class="timeline__item">
-              <div class="timeline__meta">
-                <h3 class="timeline__title">Software Developer Intern</h3>
-                <p class="timeline__place">G-KnowMe · Bangalore</p>
-                <p class="timeline__date">June 2021 – Aug 2021</p>
-              </div>
-              <ul class="timeline__bullets">
-                <li>Flask app automating PubMed mining over 1,000+ clinical trial records; cut manual effort ~70%.</li>
-                <li>NLP tagging pipeline for structured article retrieval and exploration.</li>
-              </ul>
-            </li>
-          </ol>
-        </div>
-      </section>
-
-      <section class="section" id="publications" aria-labelledby="pub-heading">
-        <div class="section__inner">
-          <h2 id="pub-heading" class="section__title">Publications</h2>
-          <article class="card card--link">
-            <h3 class="card__title">BGKnow-Medical Chatbot: A Hybrid Approach based on Knowledge Graph and GPT-2</h3>
-            <p class="card__meta">ADCIS 2023 · Scopus-indexed Springer series (LNNS)</p>
-            <p class="card__text">
-              Hybrid medical chatbot combining knowledge graphs with language models for symptom-driven retrieval and generation.
-            </p>
-            <a
-              class="text-link"
-              href="https://link.springer.com/chapter/10.1007/978-981-99-9521-9_30"
-              target="_blank"
-              rel="noopener noreferrer"
-              >View on Springer</a
-            >
-          </article>
-        </div>
-      </section>
-
-      <section class="section section--alt" id="projects" aria-labelledby="proj-heading">
-        <div class="section__inner">
-          <h2 id="proj-heading" class="section__title">Projects</h2>
-          <div class="cards">
-            <article class="card">
-              <h3 class="card__title">Agent evaluation framework</h3>
-              <p class="card__meta">Feb 2026 – Mar 2026</p>
-              <p class="card__text">
-                End-to-end benchmarking for multi-domain assistants with YAML personas, a 30-prompt suite, 5D LLM-as-judge rubric,
-                reliability across repeated runs, and a Streamlit dashboard for scores and golden-answer workflows.
-              </p>
-              <p class="card__links">
-                <a
-                  class="text-link"
-                  href="https://github.com/dishanikam12/agent-evaluation-framework"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >GitHub</a
-                >
-              </p>
-            </article>
-            <article class="card">
-              <h3 class="card__title">Adaptive learning tutor</h3>
-              <p class="card__meta">Jan 2026 – Feb 2026</p>
-              <p class="card__text">
-                Claude-based tutor with tools and memory: onboarding, diagnostics, adaptive curricula, quizzes, persisted progress,
-                optional Tavily search, FastAPI backend, and React 19 + TypeScript + Vite frontend.
-              </p>
-              <p class="card__links">
-                <a
-                  class="text-link"
-                  href="https://github.com/dishanikam12/adaptive-learning-tutor"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >GitHub</a
-                >
-              </p>
-            </article>
-            <article class="card">
-              <h3 class="card__title">Career intelligence dashboard</h3>
-              <p class="card__meta">Aug 2025 – Dec 2025</p>
-              <p class="card__text">
-                Full-stack analytics: 12+ pages, React and Node.js REST API, 117K+ job postings and 34K+ companies on AWS RDS;
-                optimized PostgreSQL (window functions, CTEs, indexes) for large speedups; Jaccard skill similarity and salary
-                percentiles.
-              </p>
-              <p class="card__links">
-                <a
-                  class="text-link"
-                  href="https://github.com/dishanikam12/Career_Intelligence_Dashboard"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >GitHub</a
-                >
-              </p>
-            </article>
-            <article class="card">
-              <h3 class="card__title">BGKnow medical chatbot</h3>
-              <p class="card__meta">Feb 2023 – Aug 2023</p>
-              <p class="card__text">
-                BioBERT embeddings, GPT-2 generation, and Neo4j knowledge graph for symptom-to-diagnosis retrieval across 500+
-                entities; fine-tuned GPT-2 on clinical data; real-time GUI with low-latency interaction.
-              </p>
-              <p class="card__links">
-                <a
-                  class="text-link"
-                  href="https://link.springer.com/chapter/10.1007/978-981-99-9521-9_30"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >Springer publication</a
-                >
-              </p>
-            </article>
-            <article class="card">
-              <h3 class="card__title">Breast cancer detection from lymphocyte images</h3>
-              <p class="card__meta">Aug 2023 – Dec 2023</p>
-              <p class="card__text">
-                1,000+ annotated lymphocyte images, augmentation and normalization, novel pixel-level balancing for class imbalance
-                (+15% vs baselines), CNN and U-Net benchmarks with 90%+ accuracy on held-out tests.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="education" aria-labelledby="edu-heading">
-        <div class="section__inner">
-          <h2 id="edu-heading" class="section__title">Education</h2>
-          <div class="cards cards--two">
-            <article class="card">
-              <h3 class="card__title">University of Pennsylvania</h3>
-              <p class="card__meta">Philadelphia, US · GPA 3.70/4.0</p>
-              <p class="card__text"><strong>M.S.E. in Computer and Information Science</strong> · Aug 2025 – May 2027</p>
-              <p class="card__text card__text--small">
-                Coursework: Trustworthy Machine Learning, Artificial Intelligence, Applied Machine Learning, Big Data Analytics.
-              </p>
-            </article>
-            <article class="card">
-              <h3 class="card__title">PES University</h3>
-              <p class="card__meta">India · GPA 9.28/10</p>
-              <p class="card__text"><strong>B.Tech in Computer Science</strong> · Dec 2020 – May 2024</p>
-              <p class="card__text card__text--small">
-                Honors: Professor MRD Scholarship (6 semesters); top 20% of batch. Activities: Director of Editorial Service
-                (Rotaract), IEEE CS Club.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section section--alt" id="skills" aria-labelledby="skills-heading">
-        <div class="section__inner">
-          <h2 id="skills-heading" class="section__title">Technical skills</h2>
-          <div class="skill-groups">
-            <div class="skill-group">
-              <h3 class="skill-group__label">Languages</h3>
-              <ul class="tags">
-                <li>Python</li>
-                <li>R</li>
-                <li>SQL</li>
-                <li>C++</li>
-                <li>Java</li>
-                <li>JavaScript</li>
-                <li>HTML/CSS</li>
-                <li>React Native</li>
-                <li>Linux</li>
-              </ul>
-            </div>
-            <div class="skill-group">
-              <h3 class="skill-group__label">AI/ML &amp; data</h3>
-              <ul class="tags">
-                <li>TensorFlow</li>
-                <li>PyTorch</li>
-                <li>Keras</li>
-                <li>Scikit-learn</li>
-                <li>Hugging Face</li>
-                <li>Pandas</li>
-                <li>NumPy</li>
-              </ul>
-            </div>
-            <div class="skill-group">
-              <h3 class="skill-group__label">NLP &amp; vision</h3>
-              <ul class="tags">
-                <li>NLTK</li>
-                <li>Matplotlib</li>
-                <li>SpaCy</li>
-                <li>SciSpacy</li>
-                <li>OpenCV</li>
-                <li>Pytesseract</li>
-              </ul>
-            </div>
-            <div class="skill-group">
-              <h3 class="skill-group__label">Tools &amp; databases</h3>
-              <ul class="tags">
-                <li>Cursor</li>
-                <li>Codex</li>
-                <li>Claude Code</li>
-                <li>Docker</li>
-                <li>Flask</li>
-                <li>Streamlit</li>
-                <li>MATLAB</li>
-                <li>MySQL</li>
-                <li>Neo4j</li>
-                <li>py2neo</li>
-                <li>Git</li>
-                <li>Slurm</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="contact" aria-labelledby="contact-heading">
-        <div class="section__inner section__inner--narrow">
-          <h2 id="contact-heading" class="section__title">Contact</h2>
-          <p class="contact__lead">Based in Philadelphia, PA · U.S. Citizen</p>
-          <address class="contact__address">
-            4525 Walnut Street, Philadelphia, PA 19139
-          </address>
-          <ul class="contact__links">
-            <li>
-              <a href="mailto:sup.disha@gmail.com">sup.disha@gmail.com</a>
-            </li>
-            <li>
-              <a href="tel:+14452080618">(445) 208-0618</a>
-            </li>
-            <li>
-              <a href="https://www.linkedin.com/in/disha-nikam-239102200/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            </li>
-            <li>
-              <a href="https://github.com/dishanikam12" target="_blank" rel="noopener noreferrer">GitHub</a>
-            </li>
-          </ul>
-        </div>
-      </section>
-    </main>
+    <main id="main"></main>
 
     <footer class="site-footer">
       <div class="site-footer__inner">
-        <p>© <span id="year"></span> Disha Nikam</p>
+        <p>© <span id="year"></span> <span id="footer-name"></span></p>
       </div>
     </footer>
 
+    <script src="js/portfolio.config.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>

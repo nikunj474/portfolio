@@ -6,62 +6,60 @@
   --radius-sm: 8px;
   --radius-md: 14px;
   --radius-lg: 22px;
-  --shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
-  --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.06);
+  --shadow: 0 18px 50px rgba(15, 23, 42, 0.06);
+  --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.04);
   --header-h: 4rem;
   --max: 1100px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 :root {
-  --bg: #f9f7fc;
-  --bg-alt: #f0e8f5;
+  --bg: #f8fafc;
+  --bg-alt: #f1f5f9;
   --surface: #ffffff;
-  --text: #14121f;
-  --text-muted: #5b5670;
-  --border: rgba(79, 70, 229, 0.12);
-  --accent: #4f46e5;
-  --accent-hot: #db2777;
-  --accent-cool: #0891b2;
-  --accent-2: #7c3aed;
+  --text: #0f172a;
+  --text-muted: #64748b;
+  --border: rgba(15, 23, 42, 0.09);
+  --accent: #1d4ed8;
+  --accent-hot: #2563eb;
+  --accent-cool: #475569;
+  --accent-2: #1e40af;
   --hero-gradient:
-    radial-gradient(1100px 520px at 92% -5%, rgba(236, 72, 153, 0.2), transparent 55%),
-    radial-gradient(800px 480px at -5% 105%, rgba(14, 165, 233, 0.16), transparent 50%),
-    radial-gradient(640px 380px at 55% 95%, rgba(124, 58, 237, 0.12), transparent 48%),
-    linear-gradient(158deg, #fdf2ff 0%, #f9f7fc 42%, #ede9fe 100%);
-  --portrait-ring: rgba(79, 70, 229, 0.45);
-  --title-gradient: linear-gradient(105deg, #312e81 0%, #7c3aed 42%, #db2777 100%);
-  --btn-gradient: linear-gradient(125deg, #4f46e5 0%, #7c3aed 48%, #db2777 100%);
-  --logo-gradient: linear-gradient(135deg, #4338ca 0%, #a21caf 100%);
-  --tag-bg: color-mix(in srgb, var(--accent) 14%, var(--surface));
-  --tag-border: color-mix(in srgb, var(--accent) 28%, transparent);
+    radial-gradient(900px 440px at 95% -15%, rgba(37, 99, 235, 0.07), transparent 58%),
+    radial-gradient(700px 380px at -5% 105%, rgba(71, 85, 105, 0.06), transparent 55%),
+    linear-gradient(165deg, #ffffff 0%, #f8fafc 38%, #f1f5f9 100%);
+  --portrait-ring: rgba(29, 78, 216, 0.28);
+  --title-gradient: linear-gradient(105deg, #0f172a 0%, #1e3a8a 45%, #1d4ed8 100%);
+  --btn-gradient: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 55%, #2563eb 100%);
+  --logo-gradient: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+  --tag-bg: color-mix(in srgb, var(--accent) 10%, var(--surface));
+  --tag-border: color-mix(in srgb, var(--accent) 22%, transparent);
 }
 
 [data-theme="dark"] {
   color-scheme: dark only;
-  --bg: #0b0a12;
-  --bg-alt: #14101f;
-  --surface: #1a1628;
-  --text: #f4f2fa;
-  --text-muted: #a9a3bc;
-  --border: rgba(167, 139, 250, 0.14);
-  --accent: #a78bfa;
-  --accent-hot: #f472b6;
-  --accent-cool: #22d3ee;
-  --accent-2: #c084fc;
+  --bg: #0f172a;
+  --bg-alt: #1e293b;
+  --surface: #334155;
+  --text: #f8fafc;
+  --text-muted: #94a3b8;
+  --border: rgba(148, 163, 184, 0.12);
+  --accent: #60a5fa;
+  --accent-hot: #93c5fd;
+  --accent-cool: #cbd5e1;
+  --accent-2: #3b82f6;
   --hero-gradient:
-    radial-gradient(1000px 500px at 90% 0%, rgba(192, 132, 252, 0.22), transparent 55%),
-    radial-gradient(760px 420px at 0% 100%, rgba(34, 211, 238, 0.12), transparent 52%),
-    radial-gradient(600px 360px at 45% 100%, rgba(244, 114, 182, 0.1), transparent 50%),
-    linear-gradient(165deg, #16102a 0%, #0b0a12 45%, #10081c 100%);
-  --portrait-ring: rgba(167, 139, 250, 0.5);
-  --shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
-  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.38);
-  --title-gradient: linear-gradient(100deg, #e9d5ff 0%, #a78bfa 40%, #f9a8d4 100%);
-  --btn-gradient: linear-gradient(125deg, #6366f1 0%, #a855f7 45%, #ec4899 100%);
-  --logo-gradient: linear-gradient(135deg, #818cf8 0%, #e879f9 100%);
-  --tag-bg: color-mix(in srgb, var(--accent) 18%, var(--surface));
-  --tag-border: color-mix(in srgb, var(--accent) 35%, transparent);
+    radial-gradient(880px 420px at 92% -8%, rgba(59, 130, 246, 0.12), transparent 56%),
+    radial-gradient(640px 360px at 0% 100%, rgba(148, 163, 184, 0.06), transparent 54%),
+    linear-gradient(168deg, #1e293b 0%, #0f172a 50%, #0c1323 100%);
+  --portrait-ring: rgba(96, 165, 250, 0.35);
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.32);
+  --title-gradient: linear-gradient(100deg, #e2e8f0 0%, #93c5fd 40%, #60a5fa 100%);
+  --btn-gradient: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #60a5fa 100%);
+  --logo-gradient: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
+  --tag-bg: color-mix(in srgb, var(--accent) 14%, var(--surface));
+  --tag-border: color-mix(in srgb, var(--accent) 28%, transparent);
 }
 
 *,
@@ -423,9 +421,9 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 18%;
-  transform: scale(1.12);
-  transform-origin: center 22%;
+  object-position: center 22%;
+  transform: scale(1.04);
+  transform-origin: center 28%;
 }
 
 .portrait__fallback {
