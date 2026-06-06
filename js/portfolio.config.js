@@ -3,9 +3,9 @@
  */
 window.PORTFOLIO = {
   meta: {
-    title: "Nikunj Agrawal — Portfolio",
+    title: "Nikunj Agrawal — Portfolio"
     description:
-      "Nikunj Agrawal — M.C.I.T. at University of Pennsylvania. Product, ML/RAG systems, and data-driven platforms across enterprise SaaS and public-sector scale.",
+      "Nikunj Agrawal — MS in CS at University of Pennsylvania. Product, ML/RAG systems, and data-driven platforms across enterprise SaaS and public-sector scale.",
   },
 
   brand: {
@@ -13,10 +13,10 @@ window.PORTFOLIO = {
   },
 
   hero: {
-    eyebrow: "M.C.I.T. · University of Pennsylvania",
+    eyebrow: "MS in CS · University of Pennsylvania",
     heading: "Hi, I'm Nikunj Agrawal",
     lead:
-      "MCIT student at Penn with a product and consulting background: agentic AI and RAG at Darwinbox, Gates-funded agriculture and education programs at GDi, and ML/data work with the Provost’s Office—focused on trustworthy systems, integrations, and measurable outcomes.",
+      "MS in CS student at Penn with a product and consulting background: agentic AI and RAG at HR SaaS Unicorn Startup, Gates-funded agriculture and education programs at the Government Consulting Firm, and ML/data work with the Provost’s Office—focused on trustworthy systems, integrations, and measurable outcomes.",
     portrait: {
       src: "./images/Nikunj_Formal_photo.JPG",
       alt: "Portrait of Nikunj Agrawal",
@@ -38,7 +38,7 @@ window.PORTFOLIO = {
   aboutParagraphs: [
     {
       html:
-        "I'm pursuing a <strong>Master of Computer and Information Technology</strong> at the <strong>University of Pennsylvania</strong> (Aug 2024 – May 2026), with relevant coursework in machine learning, distributed systems, databases, cybersecurity, and big data analytics. I've been a <strong>Graduate Teaching Assistant</strong> for Algorithms and Computations and a <strong>Research Assistant</strong> (data research) at the Center for Engineering Mechanobiology (NSF-funded).",
+        "I'm pursuing a <strong>MS in CS</strong> at the <strong>University of Pennsylvania</strong> (Aug 2024 – May 2026), with relevant coursework in machine learning, distributed systems, databases, cybersecurity, and big data analytics. I've been a <strong>Graduate Teaching Assistant</strong> for Algorithms and Computations and a <strong>Research Assistant</strong> (data research) at the Center for Engineering Mechanobiology (NSF-funded).",
     },
     {
       html:
@@ -59,7 +59,7 @@ window.PORTFOLIO = {
     },
     {
       title: "Associate Consultant",
-      place: "GDi Partners (Tech & Government Consulting) · Delhi, India",
+      place: "Government Consulting Firm · Delhi, India",
       date: "Jan 2023 – Feb 2024",
       bullets: [
         "Product consultant on a 5+ year, $400M+ Gates Foundation–funded agriculture program for a state government.",
@@ -69,7 +69,7 @@ window.PORTFOLIO = {
     },
     {
       title: "Founder’s Office — Product & Strategy",
-      place: "Darwinbox (HR SaaS) · Hyderabad, India",
+      place: "HR SaaS Unicorn Startup · Hyderabad, India",
       date: "Dec 2021 – Jan 2023",
       bullets: [
         "Led technical product work for U.S. expansion—discovery through PRD, MVP, and production—for agentic AI and integration-heavy features that increased adoption ~25%.",
@@ -124,9 +124,9 @@ window.PORTFOLIO = {
   education: [
     {
       title: "University of Pennsylvania",
-      meta: "Philadelphia, PA · M.C.I.T. (Aug 2024 – May 2026)",
+      meta: "Philadelphia, PA · MS in CS (Aug 2024 – May 2026)",
       lines: [
-        "<strong>Master of Computer and Information Technology</strong>",
+        "<strong>MS in CS</strong>",
         "Graduate Teaching Assistant — Algorithms and Computations",
         "Research Assistant — Center for Engineering Mechanobiology (NSF-funded)",
       ],
