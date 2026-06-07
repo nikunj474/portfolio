@@ -3,7 +3,7 @@
  */
 window.PORTFOLIO = {
   meta: {
-    title: "Nikunj Agrawal — Portfolio"
+    title: "Nikunj Agrawal — Portfolio",
     description:
       "Nikunj Agrawal — MS in CS at University of Pennsylvania. Product, ML/RAG systems, and data-driven platforms across enterprise SaaS and public-sector scale.",
   },
