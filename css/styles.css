@@ -14,24 +14,24 @@
 }
 
 :root {
-  --bg: #f8fafc;
-  --bg-alt: #f1f5f9;
+  --bg: #fff8f2;
+  --bg-alt: #fef3e8;
   --surface: #ffffff;
-  --text: #0f172a;
-  --text-muted: #64748b;
-  --border: rgba(15, 23, 42, 0.09);
-  --accent: #1d4ed8;
-  --accent-hot: #2563eb;
-  --accent-cool: #475569;
-  --accent-2: #1e40af;
+  --text: #2d1a0e;
+  --text-muted: #8a6a52;
+  --border: rgba(180, 100, 40, 0.12);
+  --accent: #e8752a;
+  --accent-hot: #f08040;
+  --accent-cool: #c4663a;
+  --accent-2: #d4601e;
   --hero-gradient:
-    radial-gradient(900px 440px at 95% -15%, rgba(37, 99, 235, 0.07), transparent 58%),
+    radial-gradient(900px 440px at 95% -15%, rgba(240, 128, 64, 0.07), transparent 58%),
     radial-gradient(700px 380px at -5% 105%, rgba(71, 85, 105, 0.06), transparent 55%),
-    linear-gradient(165deg, #ffffff 0%, #f8fafc 38%, #f1f5f9 100%);
-  --portrait-ring: rgba(29, 78, 216, 0.28);
-  --title-gradient: linear-gradient(105deg, #0f172a 0%, #1e3a8a 45%, #1d4ed8 100%);
-  --btn-gradient: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 55%, #2563eb 100%);
-  --logo-gradient: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    linear-gradient(165deg, #ffffff 0%, #fff8f2 38%, #fef3e8 100%);
+  --portrait-ring: rgba(232, 117, 42, 0.35);
+  --title-gradient: linear-gradient(105deg, #0f172a 0%, #c4501a 45%, #e8752a 100%);
+  --btn-gradient: linear-gradient(135deg, #c4501a 0%, #e8752a 55%, #f08040 100%);
+  --logo-gradient: linear-gradient(135deg, #c4501a 0%, #f08040 100%);
   --tag-bg: color-mix(in srgb, var(--accent) 10%, var(--surface));
   --tag-border: color-mix(in srgb, var(--accent) 22%, transparent);
 }
@@ -44,20 +44,20 @@
   --text: #f8fafc;
   --text-muted: #94a3b8;
   --border: rgba(148, 163, 184, 0.12);
-  --accent: #60a5fa;
-  --accent-hot: #93c5fd;
+  --accent: #fdba74;
+  --accent-hot: #fed7aa;
   --accent-cool: #cbd5e1;
-  --accent-2: #3b82f6;
+  --accent-2: #fb923c;
   --hero-gradient:
-    radial-gradient(880px 420px at 92% -8%, rgba(59, 130, 246, 0.12), transparent 56%),
+    radial-gradient(880px 420px at 92% -8%, rgba(251, 146, 60, 0.12), transparent 56%),
     radial-gradient(640px 360px at 0% 100%, rgba(148, 163, 184, 0.06), transparent 54%),
     linear-gradient(168deg, #1e293b 0%, #0f172a 50%, #0c1323 100%);
-  --portrait-ring: rgba(96, 165, 250, 0.35);
+  --portrait-ring: rgba(253, 186, 116, 0.35);
   --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
   --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.32);
-  --title-gradient: linear-gradient(100deg, #e2e8f0 0%, #93c5fd 40%, #60a5fa 100%);
-  --btn-gradient: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #60a5fa 100%);
-  --logo-gradient: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
+  --title-gradient: linear-gradient(100deg, #e2e8f0 0%, #fed7aa 40%, #fdba74 100%);
+  --btn-gradient: linear-gradient(135deg, #f08040 0%, #fb923c 50%, #fdba74 100%);
+  --logo-gradient: linear-gradient(135deg, #e8752a 0%, #fb923c 100%);
   --tag-bg: color-mix(in srgb, var(--accent) 14%, var(--surface));
   --tag-border: color-mix(in srgb, var(--accent) 28%, transparent);
 }
