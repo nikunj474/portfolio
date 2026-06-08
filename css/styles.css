@@ -137,6 +137,7 @@ img {
 }
 
 .logo {
+  display: none;
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 1.15rem;
