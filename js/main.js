@@ -12,40 +12,27 @@
       .replace(/"/g, "&quot;");
   }
 
-  function aboutParagraphHtml(p) {
-    if (typeof p === "string") return `<p>${esc(p)}</p>`;
-    if (p && typeof p.html === "string") return `<p>${p.html}</p>`;
-    return "";
+  // For fields authored with intentional inline HTML (e.g. &amp;, <strong>).
+  function raw(s) {
+    return s == null ? "" : String(s);
   }
 
-  function actionHtml(a) {
-    const label = esc(a.label);
-    if (a.kind === "anchor") {
-      return `<a class="btn btn--ghost" href="${esc(a.href)}">${label}</a>`;
-    }
-    if (a.kind === "download") {
-      const fn = a.filename ? esc(a.filename) : "";
-      return `<a class="btn btn--ghost" href="${esc(a.href)}" download="${fn}">${label}</a>`;
-    }
-    if (a.kind === "external") {
-      return `<a class="btn btn--ghost" href="${esc(a.href)}" target="_blank" rel="noopener noreferrer">${label}</a>`;
-    }
-    return "";
+  function pad2(n) {
+    return String(n).padStart(2, "0");
   }
 
-  function primaryActionHtml(a) {
-    const label = esc(a.label);
-    if (a.kind === "anchor") {
-      return `<a class="btn btn--primary" href="${esc(a.href)}">${label}</a>`;
-    }
-    if (a.kind === "download") {
-      const fn = a.filename ? esc(a.filename) : "";
-      return `<a class="btn btn--primary" href="${esc(a.href)}" download="${fn}">${label}</a>`;
-    }
-    if (a.kind === "external") {
-      return `<a class="btn btn--primary" href="${esc(a.href)}" target="_blank" rel="noopener noreferrer">${label}</a>`;
-    }
-    return "";
+  function externalLink(href, label, cls) {
+    return `<a class="${cls}" href="${esc(href)}" target="_blank" rel="noopener noreferrer">${esc(
+      label
+    )} <span class="arrow" aria-hidden="true">↗</span></a>`;
+  }
+
+  function sectionHead(num, kicker, subhead) {
+    return `<header class="sect__head reveal">
+      <span class="sect__num">${esc(pad2(num))}</span>
+      <h2 class="sect__title">${raw(kicker)}</h2>
+      ${subhead ? `<p class="sect__sub">${raw(subhead)}</p>` : ""}
+    </header>`;
   }
 
   function renderMeta() {
@@ -55,228 +42,244 @@
     if (m) m.setAttribute("content", cfg.meta.description);
   }
 
+  function renderBrand() {
+    const logo = document.getElementById("site-logo");
+    if (logo && cfg.brand) logo.textContent = cfg.brand.logoText || cfg.brand.initials || "";
+  }
+
   function renderNav() {
     const ul = document.getElementById("nav-list");
     if (!ul) return;
-    const items = [];
-    if (cfg.aboutParagraphs && cfg.aboutParagraphs.length) items.push({ href: "#about", label: "About" });
-    if (cfg.experience && cfg.experience.length) items.push({ href: "#experience", label: "Experience" });
-    if (cfg.publications && cfg.publications.length) items.push({ href: "#publications", label: "Publications" });
-    if (cfg.projects && cfg.projects.length) items.push({ href: "#projects", label: "Projects" });
-    if (cfg.education && cfg.education.length) items.push({ href: "#education", label: "Education" });
-    if (cfg.skills && Object.keys(cfg.skills).length) items.push({ href: "#skills", label: "Skills" });
-    if (cfg.contact) items.push({ href: "#contact", label: "Contact" });
+    const items = [{ href: "#top", label: "index" }];
+    if (cfg.about) items.push({ href: "#about", label: "about" });
+    if (cfg.education) items.push({ href: "#education", label: "education" });
+    if (cfg.skills) items.push({ href: "#skills", label: "skills" });
+    if (cfg.experience) items.push({ href: "#experience", label: "experience" });
+    if (cfg.projects) items.push({ href: "#work", label: "portfolio" });
+    if (cfg.certifications) items.push({ href: "#certifications", label: "certifications" });
+    if (cfg.contact) items.push({ href: "#contact", label: "contact" });
     ul.innerHTML = items
       .map((it) => `<li><a href="${esc(it.href)}">${esc(it.label)}</a></li>`)
       .join("");
   }
 
-  function renderBrand() {
-    const logo = document.getElementById("site-logo");
-    if (logo && cfg.brand) logo.textContent = cfg.brand.initials || "";
+  function heroSection() {
+    const h = cfg.hero || {};
+    const portrait = h.portrait || {};
+    return `<section class="hero" id="top" aria-labelledby="hero-heading">
+      <div class="hero__grid">
+        <div class="hero__text">
+          ${
+            h.availability
+              ? `<p class="hero__badge"><span class="hero__dot" aria-hidden="true"></span>${esc(
+                  h.availability
+                )}</p>`
+              : ""
+          }
+          <h1 id="hero-heading" class="hero__name">
+            <span>${esc(h.firstName || "")}</span>
+            <span>${esc(h.lastName || "")}</span>
+          </h1>
+          <p class="hero__lead">${esc(h.tagline || "")}</p>
+          ${h.location ? `<p class="hero__loc">${esc(h.location)}</p>` : ""}
+        </div>
+        <div class="hero__portrait">
+          <figure class="portrait" id="portrait-root">
+            <img class="portrait__img" src="${esc(portrait.src || "")}" alt="${esc(
+      portrait.alt || ""
+    )}" width="360" height="440" loading="eager" decoding="async" />
+            <figcaption class="visually-hidden">${esc(portrait.alt || "")}</figcaption>
+            <div class="portrait__fallback" id="portrait-fallback" aria-hidden="true">${esc(
+              portrait.fallbackInitials || cfg.brand?.initials || ""
+            )}</div>
+          </figure>
+        </div>
+      </div>
+      <div class="hero__foot">
+        <span>${esc(cfg.footerName || "")}</span>
+        ${h.version ? `<span class="hero__ver">${esc(h.version)}</span>` : ""}
+        <a class="hero__scroll" href="#about">SCROLL <span aria-hidden="true">↓</span></a>
+      </div>
+    </section>`;
+  }
+
+  function aboutSection(num) {
+    const a = cfg.about;
+    if (!a) return "";
+    const paras = (a.paragraphs || []).map((p) => `<p class="reveal">${raw(p)}</p>`).join("");
+    const cta = a.resume
+      ? `<a class="link-cta reveal" href="${esc(a.resume.href)}" download="${esc(
+          a.resume.filename || ""
+        )}">${esc(a.resume.label)} <span class="arrow" aria-hidden="true">↗</span></a>`
+      : "";
+    return `<section class="sect" id="about" aria-labelledby="about-heading">
+      <div class="sect__inner">
+        ${sectionHead(num, a.kicker, a.subhead)}
+        <div class="about">
+          ${a.statement ? `<p class="about__statement reveal">${raw(a.statement)}</p>` : ""}
+          <div class="about__body">${paras}${cta}</div>
+        </div>
+      </div>
+    </section>`;
+  }
+
+  function educationSection(num) {
+    const e = cfg.education;
+    if (!e || !e.items || !e.items.length) return "";
+    const cards = e.items
+      .map((ed, i) => {
+        const stats = (ed.stats || [])
+          .map(
+            (s) =>
+              `<div class="edu__stat"><span class="edu__stat-label">${raw(
+                s.label
+              )}</span><span class="edu__stat-value">${raw(s.value)}</span></div>`
+          )
+          .join("");
+        return `<article class="edu reveal">
+          <span class="edu__index">${esc(pad2(i + 1))} / ${esc(pad2(e.items.length))}</span>
+          <h3 class="edu__school">${raw(ed.school)}</h3>
+          <p class="edu__degree">${raw(ed.degree)}</p>
+          <div class="edu__stats">${stats}</div>
+          ${ed.note ? `<p class="edu__note">${raw(ed.note)}</p>` : ""}
+        </article>`;
+      })
+      .join("");
+    return `<section class="sect sect--alt" id="education" aria-labelledby="education-heading">
+      <div class="sect__inner">
+        ${sectionHead(num, e.kicker, e.subhead)}
+        <div class="edu-grid">${cards}</div>
+      </div>
+    </section>`;
+  }
+
+  function skillsSection(num) {
+    const s = cfg.skills;
+    if (!s || !s.items || !s.items.length) return "";
+    const sub = `${s.items.length} ${raw(s.subhead || "")}`.trim();
+    const tags = s.items.map((t) => `<li>${esc(t)}</li>`).join("");
+    return `<section class="sect" id="skills" aria-labelledby="skills-heading">
+      <div class="sect__inner">
+        ${sectionHead(num, s.kicker, sub)}
+        <ul class="tech reveal">${tags}</ul>
+      </div>
+    </section>`;
+  }
+
+  function experienceSection(num) {
+    const e = cfg.experience;
+    if (!e || !e.items || !e.items.length) return "";
+    const rows = e.items
+      .map(
+        (job) => `<article class="job reveal">
+          <div class="job__main">
+            <h3 class="job__title">${raw(job.title)}</h3>
+            <p class="job__org">${raw(job.org)}${
+          job.location ? ` · <span class="job__loc">${raw(job.location)}</span>` : ""
+        }</p>
+            <p class="job__desc">${raw(job.description)}</p>
+          </div>
+          <div class="job__date">${raw(job.date || "")}</div>
+        </article>`
+      )
+      .join("");
+    return `<section class="sect sect--alt" id="experience" aria-labelledby="experience-heading">
+      <div class="sect__inner">
+        ${sectionHead(num, e.kicker, e.subhead)}
+        <div class="job-list">${rows}</div>
+      </div>
+    </section>`;
+  }
+
+  function projectsSection(num) {
+    const p = cfg.projects;
+    if (!p || !p.items || !p.items.length) return "";
+    const cards = p.items
+      .map((proj) => {
+        const tags = (proj.tags || []).map((t) => `<li>${esc(t)}</li>`).join("");
+        const link = proj.link
+          ? externalLink(proj.link.href, proj.link.label, "work__link")
+          : `<span class="work__link work__link--none">PRIVATE REPOSITORY</span>`;
+        return `<article class="work reveal">
+          <div class="work__top">
+            <h3 class="work__title">${raw(proj.title)}</h3>
+            ${proj.date ? `<span class="work__date">${raw(proj.date)}</span>` : ""}
+          </div>
+          <p class="work__desc">${raw(proj.description)}</p>
+          <ul class="work__tags">${tags}</ul>
+          <div class="work__foot">${link}</div>
+        </article>`;
+      })
+      .join("");
+    return `<section class="sect" id="work" aria-labelledby="work-heading">
+      <div class="sect__inner">
+        ${sectionHead(num, p.kicker, p.subhead)}
+        <div class="work-grid">${cards}</div>
+      </div>
+    </section>`;
+  }
+
+  function certificationsSection(num) {
+    const c = cfg.certifications;
+    if (!c) return "";
+    let body;
+    if (c.items && c.items.length) {
+      body = `<div class="cert-grid">${c.items
+        .map(
+          (cert) => `<article class="cert reveal">
+            <h3 class="cert__title">${raw(cert.title)}</h3>
+            ${cert.issuer ? `<p class="cert__issuer">${raw(cert.issuer)}</p>` : ""}
+            ${cert.date ? `<span class="cert__date">${raw(cert.date)}</span>` : ""}
+          </article>`
+        )
+        .join("")}</div>`;
+    } else {
+      body = `<p class="sect__placeholder reveal">${raw(c.placeholder || "Coming soon.")}</p>`;
+    }
+    return `<section class="sect sect--alt" id="certifications" aria-labelledby="certifications-heading">
+      <div class="sect__inner">
+        ${sectionHead(num, c.kicker, c.subhead)}
+        ${body}
+      </div>
+    </section>`;
+  }
+
+  function contactSection(num) {
+    const c = cfg.contact;
+    if (!c) return "";
+    const links = (c.links || [])
+      .map(
+        (l) =>
+          `<li><a href="${esc(l.href)}">${esc(l.label)} <span class="arrow" aria-hidden="true">↗</span></a></li>`
+      )
+      .join("");
+    return `<section class="sect sect--contact" id="contact" aria-labelledby="contact-heading">
+      <div class="sect__inner">
+        ${sectionHead(num, c.kicker, c.subhead)}
+        <div class="contact reveal">
+          ${c.lead ? `<p class="contact__lead">${raw(c.lead)}</p>` : ""}
+          ${c.location ? `<p class="contact__loc">${esc(c.location)}</p>` : ""}
+          <ul class="contact__links">${links}</ul>
+        </div>
+      </div>
+    </section>`;
   }
 
   function renderMain() {
     const main = document.getElementById("main");
     if (!main || !cfg.hero) return;
 
-    const h = cfg.hero;
-    const portrait = h.portrait || {};
-    const primary = h.actions && h.actions.length ? h.actions[0] : null;
-    const restActions = h.actions && h.actions.length > 1 ? h.actions.slice(1) : [];
+    const sections = [];
+    let n = 2; // hero is implicitly 01
+    if (cfg.about) sections.push(aboutSection(n++));
+    if (cfg.education) sections.push(educationSection(n++));
+    if (cfg.skills) sections.push(skillsSection(n++));
+    if (cfg.experience) sections.push(experienceSection(n++));
+    if (cfg.projects) sections.push(projectsSection(n++));
+    if (cfg.certifications) sections.push(certificationsSection(n++));
+    if (cfg.contact) sections.push(contactSection(n++));
 
-    const aboutSection =
-      cfg.aboutParagraphs && cfg.aboutParagraphs.length
-        ? `<section class="section" id="about" aria-labelledby="about-heading">
-        <div class="section__inner">
-          <h2 id="about-heading" class="section__title">About</h2>
-          <div class="prose">${cfg.aboutParagraphs.map(aboutParagraphHtml).join("")}</div>
-        </div>
-      </section>`
-        : "";
-
-    const experienceSection =
-      cfg.experience && cfg.experience.length
-        ? `<section class="section section--alt" id="experience" aria-labelledby="exp-heading">
-        <div class="section__inner">
-          <h2 id="exp-heading" class="section__title">Experience</h2>
-          <ol class="timeline">
-            ${cfg.experience
-              .map(
-                (job) => `<li class="timeline__item">
-              <div class="timeline__meta">
-                <h3 class="timeline__title">${esc(job.title)}</h3>
-                <p class="timeline__place">${esc(job.place)}</p>
-                <p class="timeline__date">${esc(job.date)}</p>
-              </div>
-              <ul class="timeline__bullets">
-                ${(job.bullets || []).map((b) => `<li>${esc(b)}</li>`).join("")}
-              </ul>
-            </li>`
-              )
-              .join("")}
-          </ol>
-        </div>
-      </section>`
-        : "";
-
-    const publicationsSection =
-      cfg.publications && cfg.publications.length
-        ? `<section class="section" id="publications" aria-labelledby="pub-heading">
-        <div class="section__inner">
-          <h2 id="pub-heading" class="section__title">Publications</h2>
-          ${cfg.publications
-            .map((pub) => {
-              const links = (pub.links || [])
-                .map(
-                  (l) =>
-                    `<a class="text-link" href="${esc(l.href)}" target="_blank" rel="noopener noreferrer">${esc(l.label)}</a>`
-                )
-                .join("");
-              return `<article class="card card--link">
-            <h3 class="card__title">${esc(pub.title)}</h3>
-            <p class="card__meta">${esc(pub.meta)}</p>
-            <p class="card__text">${esc(pub.text)}</p>
-            ${links ? `<p class="card__links">${links}</p>` : ""}
-          </article>`;
-            })
-            .join("")}
-        </div>
-      </section>`
-        : "";
-
-    const projectsSection =
-      cfg.projects && cfg.projects.length
-        ? `<section class="section section--alt" id="projects" aria-labelledby="proj-heading">
-        <div class="section__inner">
-          <h2 id="proj-heading" class="section__title">Projects</h2>
-          <div class="cards">
-            ${cfg.projects
-              .map((proj) => {
-                const linkBlock =
-                  proj.links && proj.links.length
-                    ? `<p class="card__links">${proj.links
-                        .map(
-                          (l) =>
-                            `<a class="text-link" href="${esc(l.href)}" target="_blank" rel="noopener noreferrer">${esc(l.label)}</a>`
-                        )
-                        .join("")}</p>`
-                    : "";
-                return `<article class="card">
-              <h3 class="card__title">${esc(proj.title)}</h3>
-              <p class="card__meta">${esc(proj.meta)}</p>
-              <p class="card__text">${esc(proj.text)}</p>
-              ${linkBlock}
-            </article>`;
-              })
-              .join("")}
-          </div>
-        </div>
-      </section>`
-        : "";
-
-    const educationSection =
-      cfg.education && cfg.education.length
-        ? `<section class="section" id="education" aria-labelledby="edu-heading">
-        <div class="section__inner">
-          <h2 id="edu-heading" class="section__title">Education</h2>
-          <div class="cards cards--two">
-            ${cfg.education
-              .map((ed) => {
-                const lines = (ed.lines || []).map((line) => `<p class="card__text">${line}</p>`).join("");
-                const foot = ed.footnote
-                  ? `<p class="card__text card__text--small">${esc(ed.footnote)}</p>`
-                  : "";
-                return `<article class="card">
-              <h3 class="card__title">${esc(ed.title)}</h3>
-              <p class="card__meta">${esc(ed.meta)}</p>
-              ${lines}
-              ${foot}
-            </article>`;
-              })
-              .join("")}
-          </div>
-        </div>
-      </section>`
-        : "";
-
-    const skillsSection =
-      cfg.skills && Object.keys(cfg.skills).length
-        ? `<section class="section section--alt" id="skills" aria-labelledby="skills-heading">
-        <div class="section__inner">
-          <h2 id="skills-heading" class="section__title">Technical skills</h2>
-          <div class="skill-groups">
-            ${Object.entries(cfg.skills)
-              .map(
-                ([label, tags]) => `<div class="skill-group">
-              <h3 class="skill-group__label">${esc(label)}</h3>
-              <ul class="tags">${(tags || []).map((t) => `<li>${esc(t)}</li>`).join("")}</ul>
-            </div>`
-              )
-              .join("")}
-          </div>
-        </div>
-      </section>`
-        : "";
-
-    const contactSection = cfg.contact
-      ? `<section class="section" id="contact" aria-labelledby="contact-heading">
-        <div class="section__inner section__inner--narrow">
-          <h2 id="contact-heading" class="section__title">Contact</h2>
-          <p class="contact__lead">${esc(cfg.contact.lead || "")}</p>
-          ${
-            cfg.contact.address
-              ? `<address class="contact__address">${esc(cfg.contact.address)}</address>`
-              : ""
-          }
-          <ul class="contact__links">
-            ${(cfg.contact.links || [])
-              .map((l) => `<li><a href="${esc(l.href)}">${esc(l.label)}</a></li>`)
-              .join("")}
-          </ul>
-        </div>
-      </section>`
-      : "";
-
-    const primaryBtn = primary ? primaryActionHtml(primary) : "";
-
-    main.innerHTML = `<section class="hero" aria-labelledby="hero-heading">
-        <div class="hero__grid">
-          <div class="hero__text">
-            <p class="eyebrow">${esc(h.eyebrow)}</p>
-            <h1 id="hero-heading">${esc(h.heading)}</h1>
-            <p class="hero__lead">${esc(h.lead)}</p>
-            <div class="hero__actions">
-              ${primaryBtn}
-              ${restActions.map(actionHtml).join("")}
-            </div>
-          </div>
-          <div class="hero__portrait">
-            <figure class="portrait" id="portrait-root">
-              <img
-                class="portrait__img"
-                src="${esc(portrait.src || "")}"
-                alt="${esc(portrait.alt || "")}"
-                width="320"
-                height="320"
-                loading="eager"
-                decoding="async"
-              />
-              <figcaption class="visually-hidden">${esc(portrait.alt || "")}</figcaption>
-              <div class="portrait__fallback" id="portrait-fallback" aria-hidden="true">${esc(
-                portrait.fallbackInitials || cfg.brand?.initials || ""
-              )}</div>
-            </figure>
-          </div>
-        </div>
-      </section>
-      ${aboutSection}
-      ${experienceSection}
-      ${publicationsSection}
-      ${projectsSection}
-      ${educationSection}
-      ${skillsSection}
-      ${contactSection}`;
+    main.innerHTML = heroSection() + sections.join("");
   }
 
   function renderFooter() {
@@ -311,17 +314,13 @@
 
   function applyTheme(theme) {
     root.setAttribute("data-theme", theme);
-    if (toggle) {
-      toggle.setAttribute("aria-pressed", String(theme === "dark"));
-    }
+    if (toggle) toggle.setAttribute("aria-pressed", String(theme === "dark"));
   }
 
   function initTheme() {
     applyTheme(resolvedTheme());
     window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
-      if (!getStoredTheme()) {
-        applyTheme(systemTheme());
-      }
+      if (!getStoredTheme()) applyTheme(systemTheme());
     });
     if (toggle) {
       toggle.addEventListener("click", () => {
@@ -348,6 +347,28 @@
     if (yearEl) yearEl.textContent = String(new Date().getFullYear());
   }
 
+  function initReveal() {
+    const items = document.querySelectorAll(".reveal");
+    if (!items.length) return;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+      items.forEach((el) => el.classList.add("is-visible"));
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.1 }
+    );
+    items.forEach((el) => observer.observe(el));
+  }
+
   if (!cfg) {
     console.error("Missing window.PORTFOLIO — load js/portfolio.config.js before main.js");
     initTheme();
@@ -356,11 +377,12 @@
   }
 
   renderMeta();
-  renderNav();
   renderBrand();
+  renderNav();
   renderMain();
   renderFooter();
   initTheme();
   initPortrait();
   initYear();
+  initReveal();
 })();

@@ -1,188 +1,235 @@
 /**
- * Nikunj Agrawal — sourced from Nikunj_Agrawal.pdf, Nikunj_SE.pdf, and Nikunj_TP__1_.pdf
+ * Nikunj Agrawal — portfolio content.
+ * Content sourced from Nikunj's master resume bank and current portfolio.
+ * Layout/design is an original build in an editorial single-page format.
  */
 window.PORTFOLIO = {
   meta: {
-    title: "Nikunj Agrawal — Portfolio",
+    title: "Nikunj Agrawal",
     description:
-      "Nikunj Agrawal — M.C.I.T. at University of Pennsylvania. Product, ML/RAG systems, and data-driven platforms across enterprise SaaS and public-sector scale.",
+      "Nikunj Agrawal — AI/ML engineer and product technologist. M.C.I.T. at the University of Pennsylvania. Building trustworthy RAG systems, ML pipelines, and data-driven products.",
   },
 
   brand: {
+    name: "Nikunj Agrawal",
+    logoText: "Nikunj",
     initials: "NA",
   },
 
   hero: {
-    eyebrow: "M.C.I.T. · University of Pennsylvania",
-    heading: "Hi, I'm Nikunj Agrawal",
-    lead:
-      "MCIT student at Penn with a product and consulting background: agentic AI and RAG at Darwinbox, Gates-funded agriculture and education programs at GDi, and ML/data work with the Provost’s Office—focused on trustworthy systems, integrations, and measurable outcomes.",
+    availability: "",
+    firstName: "Nikunj",
+    lastName: "Agrawal",
+    tagline:
+      "AI/ML Engineer · Product Technologist (New Grad). Building trustworthy RAG systems, ML pipelines, and data-driven products at the intersection of AI and product.",
+    location: "Based in Philadelphia, PA",
+    version: "v. 01.0",
     portrait: {
       src: "./images/Nikunj_Formal_photo.JPG",
       alt: "Portrait of Nikunj Agrawal",
       fallbackInitials: "NA",
     },
-    actions: [
-      { kind: "anchor", label: "Get in touch", href: "#contact" },
+  },
+
+  about: {
+    kicker: "A note on me",
+    subhead: "THE SHORT VERSION",
+    statement:
+      "I build trustworthy AI systems and the products around them — and I'm picky about both halves.",
+    paragraphs: [
+      "Hi, I'm Nikunj — an AI/ML engineer and product technologist, currently finishing my Master's in Computer &amp; Information Technology at the University of Pennsylvania. I've shipped production RAG and agentic AI at Darwinbox, led ML-driven programs on a $400M+ Gates Foundation initiative at GDi, and built ML pipelines and dashboards with Penn's Provost's Office.",
+      "I work across RAG, ML pipelines, backend APIs, and data products — turning ambiguous problems into measurable outcomes, and arguing with models until they behave.",
+      "If you're hiring, curious, or just want to talk AI, product, and everything in between, reach me through any of the ways in the contact section below.",
+    ],
+    resume: {
+      label: "READ MY FULL RESUME",
+      href: "assets/nikunj-agrawal-resume.pdf",
+      filename: "Nikunj-Agrawal-resume.pdf",
+    },
+  },
+
+  education: {
+    kicker: "Things I studied",
+    subhead: "TWO DEGREES, ONE CONSTANT QUESTION",
+    items: [
       {
-        kind: "download",
-        label: "Download résumé",
-        href: "assets/nikunj-agrawal-resume.pdf",
-        filename: "Nikunj-Agrawal-resume.pdf",
+        school: "University of Pennsylvania",
+        degree: "Masters in Computer Science · Philadelphia, PA, USA",
+        stats: [
+          { label: "TENURE", value: "2024 — 2026" },
+          { label: "FOCUS", value: "ML · Systems" },
+        ],
+        note: "Teaching Assistant (Algorithms) · Research Assistant — Center for Engineering Mechanobiology (NSF-funded).",
       },
-      { kind: "external", label: "GitHub", href: "https://github.com/nikunj474" },
-      { kind: "external", label: "LinkedIn", href: "https://www.linkedin.com/in/nikunj3/" },
+      {
+        school: "Shri Ram College of Commerce (SRCC), University of Delhi",
+        degree: "B.Com. (Honors), Finance &amp; Economics · New Delhi, India",
+        stats: [
+          { label: "TENURE", value: "2018 — 2021" },
+          { label: "GPA", value: "8.69 / 10" },
+        ],
+        note: "Top 5% · V.K. Bhalla Gold Medal (Financial Management) · CMA Scholarship for the full program.",
+      },
     ],
   },
 
-  aboutParagraphs: [
-    {
-      html:
-        "I'm pursuing a <strong>Master of Computer and Information Technology</strong> at the <strong>University of Pennsylvania</strong> (Aug 2024 – May 2026), with relevant coursework in machine learning, distributed systems, databases, cybersecurity, and big data analytics. I've been a <strong>Graduate Teaching Assistant</strong> for Algorithms and Computations and a <strong>Research Assistant</strong> (data research) at the Center for Engineering Mechanobiology (NSF-funded).",
-    },
-    {
-      html:
-        "Earlier I earned a <strong>B.Com. (Honors)</strong> in Finance &amp; Economics from <strong>SRCC, University of Delhi</strong> (Top 5%, GPA 8.68/10), with honors including the V.K. Bhalla Gold Medal in Financial Management and the CMA Scholarship. I care about clear metrics, stakeholder alignment, and shipping—from RAG and ML pipelines to APIs and dashboards—whether in enterprise HR tech or large public programs.",
-    },
-  ],
-
-  experience: [
-    {
-      title: "ML and Data Intern",
-      place: "Provost’s Office, University of Pennsylvania · Philadelphia, PA",
-      date: "May 2025 – Aug 2025",
-      bullets: [
-        "Partnered with academic stakeholders on data requirements and success metrics for enrollment patterns across a substantial share of UPenn’s course catalog.",
-        "Delivered predictive insights and Tableau dashboards for faculty and administrators; built data pipelines with Scikit-learn, NumPy, and related ML tooling.",
-        "Shipped a customer-facing REST API for multi-platform course lists with real-time tracking and comprehensive error handling; parallelized template processing with asyncio for higher throughput while preserving accuracy checks.",
-      ],
-    },
-    {
-      title: "Associate Consultant",
-      place: "GDi Partners (Tech & Government Consulting) · Delhi, India",
-      date: "Jan 2023 – Feb 2024",
-      bullets: [
-        "Product consultant on a 5+ year, $400M+ Gates Foundation–funded agriculture program for a state government.",
-        "Owned end-to-end delivery of Python-based AI workflows for routing, automated triage, and human-in-the-loop grievance redressal—~30% higher engagement and ~80% automated resolution within 48 hours (per résumé).",
-        "Applied predictive models to improve learning outcomes for Grades 5–8 (~28%) and reduce dropouts (~15%); bridged policymakers, domain experts, and engineering.",
-      ],
-    },
-    {
-      title: "Founder’s Office — Product & Strategy",
-      place: "Darwinbox (HR SaaS) · Hyderabad, India",
-      date: "Dec 2021 – Jan 2023",
-      bullets: [
-        "Led technical product work for U.S. expansion—discovery through PRD, MVP, and production—for agentic AI and integration-heavy features that increased adoption ~25%.",
-        "Architected third-party payroll integrations (3 major U.S. providers) with data models, error taxonomies, and rollout plans; supported a $72M Series D with product narratives and technical diligence.",
-        "Owned a production RAG-based AI agent with React integration—prompt patterns, tool use, evaluation, and guardrails—plus roadmap input from market analysis with EY’s HR consulting team.",
-      ],
-    },
-    {
-      title: "Technical Product Analyst",
-      place: "Astra Asset Management UK Ltd. · London & Delhi",
-      date: "June 2021 – Dec 2021",
-      bullets: [
-        "Led a Bayesian optimization multi-objective calibration pipeline using BoTorch with Gaussian process surrogates.",
-        "Supported Python and MERN-based financial models for investment decisions; containerized services with Docker and deployed on Microsoft Azure.",
-      ],
-    },
-  ],
-
-  publications: [],
-
-  projects: [
-    {
-      title: "Predictive risk modeling — meteorite fall prediction",
-      meta: "ML pipeline · class imbalance · model comparison",
-      text:
-        "End-to-end ML pipeline for rare-event prediction: Logistic Regression, Random Forest, Gradient Boosting, and ensembles; BorderlineSMOTE for imbalance; modular experiments with precision, recall, F1, and ROC-AUC; stakeholder-facing synthesis of risk and uncertainty.",
-      links: [],
-    },
-    {
-      title: "RAG-based financial news intelligence",
-      meta: "S&P 500 · DistilBERT · contextual retrieval",
-      text:
-        "RAG product answering natural-language queries over 10+ years of financial news for S&P 500 names; DistilBERT-style embedding retrieval, tradeoffs between keyword search, embeddings, and latency; explainable outputs with citations and price-movement context across related equities.",
-      links: [{ label: "GitHub", href: "https://github.com/nikunj474/RAG_Stock_predictor_model" }],
-    },
-    {
-      title: "Nutritional intelligence web application",
-      meta: "Java · MERN · OCR",
-      text:
-        "Full-stack app to track nutrition by scanning grocery receipts with OCR; backend services to parse, normalize, and store data for trends and goal tracking.",
-      links: [{ label: "GitHub", href: "https://github.com/nikunj474/NutS" }],
-    },
-    {
-      title: "Email administration & onboarding system",
-      meta: "Internal platform · RBAC",
-      text:
-        "Internal email administration platform automating employee onboarding and department assignment—modular backend, role-based access, and account provisioning.",
-      links: [{ label: "GitHub", href: "https://github.com/nikunj474/Email-Administration-App" }],
-    },
-  ],
-
-  education: [
-    {
-      title: "University of Pennsylvania",
-      meta: "Philadelphia, PA · M.C.I.T. (Aug 2024 – May 2026)",
-      lines: [
-        "<strong>Master of Computer and Information Technology</strong>",
-        "Graduate Teaching Assistant — Algorithms and Computations",
-        "Research Assistant — Center for Engineering Mechanobiology (NSF-funded)",
-      ],
-      footnote:
-        "Coursework includes Machine Learning, Software Systems (distributed systems), Databases, Cybersecurity, Big Data Analytics, and DSA.",
-    },
-    {
-      title: "Shri Ram College of Commerce (SRCC), University of Delhi",
-      meta: "New Delhi, India · GPA 8.68/10 (Top 5%)",
-      lines: ["<strong>B.Com. (Honors)</strong> — Finance &amp; Economics · July 2018 – May 2021"],
-      footnote:
-        "Honors: V.K. Bhalla Gold Medal in Financial Management; CMA Scholarship for the full program. Activities: President (NSS), Secretary (Student Government, Class of 2021), Computer and Maths Society.",
-    },
-  ],
-
   skills: {
-    "Product & AI": [
-      "Product roadmapping",
-      "PRDs & metrics",
-      "AI / LLM evaluation",
-      "Human-in-the-loop design",
-      "RAG pipelines",
-      "LangChain",
-      "Multi-agent orchestration",
-      "Agentic workflows",
-    ],
-    "Languages & stacks": ["Python", "C", "C++", "Java", "SQL", "JavaScript", "HTML/CSS", "R", "MERN"],
-    "ML & data": [
-      "scikit-learn",
-      "TensorFlow",
+    kicker: "Tools of the trade",
+    subhead: "LANGUAGES, FRAMEWORKS &amp; PLATFORMS",
+    items: [
+      "Python",
+      "C++",
+      "C",
+      "Java",
+      "SQL",
+      "JavaScript",
+      "TypeScript",
+      "HTML5",
+      "CSS3",
+      "R",
       "PyTorch",
-      "Pandas",
-      "NumPy",
-      "Tableau",
-      "ML pipelines",
-    ],
-    "Systems & tools": [
+      "TensorFlow",
+      "HuggingFace",
+      "Scikit-Learn",
+      "XGBoost",
+      "LangChain",
+      "FAISS",
+      "pgvector",
+      "RAG",
+      "RAGAS",
+      "vLLM",
+      "MLflow",
+      "Weights & Biases",
+      "FastAPI",
+      "Node.js",
+      "React",
+      "GraphQL",
       "REST APIs",
       "Docker",
-      "Git",
       "AWS",
+      "Git",
+      "GitHub Actions",
+      "PostgreSQL",
       "MongoDB",
-      "Vector DBs",
-      "asyncio",
-      "BoTorch",
+      "Redis",
+      "Kafka",
+      "Tableau",
+      "OCR",
     ],
+  },
+
+  experience: {
+    kicker: "Where I've worked",
+    subhead: "A REVERSE-CHRONOLOGICAL TOUR",
+    items: [
+      {
+        title: "ML & Data Engineering Intern",
+        org: "Provost's Office, University of Pennsylvania",
+        location: "Philadelphia, PA",
+        date: "May 2025 — Aug 2025",
+        description:
+          "Built ML pipelines and TypeScript REST APIs surfacing enrollment insights across UPenn's academic schools. Trained Scikit-learn and TensorFlow models to ~84% accuracy, shipped a versioned serving API, and parallelized batch inference with asyncio for a 6× throughput gain — all surfaced to faculty through React and Tableau dashboards.",
+      },
+      {
+        title: "Technical Product Consultant",
+        org: "GDi Partners (Tech & Government Consulting)",
+        location: "Delhi, India",
+        date: "Jan 2023 — Feb 2024",
+        description:
+          "Owned product and delivery on a $400M+ Gates Foundation–funded state program. Built an XGBoost ML pipeline with SHAP explainability and a FastAPI + React grievance platform (RBAC) serving 150K+ users; model-driven interventions improved learning outcomes ~28% across 900+ government schools and lifted engagement ~30%.",
+      },
+      {
+        title: "Founder's Office — Product & AI",
+        org: "Darwinbox (HR SaaS Unicorn)",
+        location: "Hyderabad, India",
+        date: "Dec 2021 — Jan 2023",
+        description:
+          "Led U.S. expansion from the Founder's Office. Shipped a production RAG chatbot (LangChain, FAISS, React) that cut resolution time ~40%, architected three U.S. payroll integrations, and helped close a $72M Series D with product narrative and technical diligence — growing user adoption ~25%.",
+      },
+      {
+        title: "Technical Product Analyst",
+        org: "Astra Asset Management UK Ltd.",
+        location: "London & Delhi",
+        date: "Jun 2021 — Dec 2021",
+        description:
+          "Designed a Bayesian multi-objective optimization pipeline (PyTorch, BoTorch, Gaussian-process surrogates) for portfolio risk calibration, and built React + FastAPI tools exposing the results. Containerized model serving with Docker and deployed on AWS with CI/CD.",
+      },
+    ],
+  },
+
+  projects: {
+    kicker: "Selected work",
+    subhead: "SELECTED BUILDS, EXPERIMENTS & SIDE QUESTS",
+    items: [
+      {
+        title: "RAG-Based Financial News Intelligence",
+        date: "2025",
+        description:
+          "Answers natural-language questions over 10+ years of S&P 500 news with citations and price-movement context.",
+        tags: ["Python", "DistilBERT", "FAISS", "RAG"],
+        link: { label: "VIEW ON GITHUB", href: "https://github.com/nikunj474/RAG_Stock_predictor_model" },
+      },
+      {
+        title: "LLM Fine-Tuning + Multi-Agent Serving",
+        date: "2025",
+        description:
+          "Fine-tuned Llama-3-8B (LoRA) served via vLLM behind a LangChain multi-agent RAG layer at 10K+ queries/day.",
+        tags: ["Python", "HuggingFace", "LoRA", "vLLM", "LangChain"],
+        link: null,
+      },
+      {
+        title: "Predictive Risk Modeling System",
+        date: "2024",
+        description:
+          "End-to-end rare-event (meteorite fall) prediction with model comparison, BorderlineSMOTE, and a calibrated REST API.",
+        tags: ["Python", "Scikit-Learn", "Docker", "REST API"],
+        link: null,
+      },
+      {
+        title: "Nutritional Intelligence Web App",
+        date: "2024",
+        description:
+          "Tracks daily nutrition by scanning grocery receipts through an OCR ingestion pipeline.",
+        tags: ["Java", "MERN", "OCR"],
+        link: { label: "VIEW ON GITHUB", href: "https://github.com/nikunj474/NutS" },
+      },
+      {
+        title: "Email Administration & Onboarding",
+        date: "2023",
+        description:
+          "Internal platform automating employee onboarding and department provisioning with role-based access.",
+        tags: ["Node.js", "RBAC", "REST API"],
+        link: { label: "VIEW ON GITHUB", href: "https://github.com/nikunj474/Email-Administration-App" },
+      },
+      {
+        title: "Growth Analytics & Experimentation",
+        date: "2023",
+        description:
+          "A/B testing platform running 15+ concurrent experiments, cutting decision time from weeks to 3 days.",
+        tags: ["Python", "SQL", "Experimentation"],
+        link: null,
+      },
+    ],
+  },
+
+  certifications: {
+    kicker: "Certifications",
+    subhead: "CREDENTIALS & COURSEWORK",
+    items: [],
+    placeholder: "More coming soon — certifications and credentials will land here.",
   },
 
   contact: {
-    lead: "Philadelphia, PA",
-    address: "4200 Ludlow St., Apt 412, Philadelphia, PA 19104",
+    kicker: "Say hello",
+    subhead: "LET'S BUILD SOMETHING",
+    lead:
+      "If you're hiring, curious, or just want to talk AI, product, and everything in between — reach me any of these ways.",
+    location: "Philadelphia, PA",
     links: [
       { label: "nikunj@seas.upenn.edu", href: "mailto:nikunj@seas.upenn.edu" },
-      { label: "(445) 256-2065", href: "tel:+14452562065" },
-      { label: "LinkedIn", href: "https://www.linkedin.com/in/nikunj3/" },
-      { label: "GitHub", href: "https://github.com/nikunj474" },
+      { label: "+1 (445) 256-2065", href: "tel:+14452562065" },
+      { label: "linkedin.com/in/nikunj3", href: "https://www.linkedin.com/in/nikunj3/" },
+      { label: "github.com/nikunj474", href: "https://github.com/nikunj474" },
     ],
   },
 
