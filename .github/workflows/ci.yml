@@ -15,6 +15,11 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Verify the generated icon set is current
+        run: |
+          npm run icons
+          git diff --exit-code lib/tech-icons.ts
+
       - run: npm run typecheck
       - run: npm run lint
       - run: npm run build

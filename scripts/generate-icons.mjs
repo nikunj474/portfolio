@@ -6,7 +6,7 @@
  * three thousand in the package. Re-run with `npm run icons` after editing the
  * SLUGS list below or bumping simple-icons.
  */
-import { writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import * as si from "simple-icons";
 
 // Every slug referenced by lib/content.ts. Keep sorted.
@@ -16,7 +16,8 @@ const SLUGS = [
   "graphql", "html5", "huggingface", "javascript", "jenkins", "jira",
   "langchain", "langgraph", "linux", "mlflow", "modelcontextprotocol",
   "mongodb", "nextdotjs", "nodedotjs", "numpy", "onnx", "openapiinitiative",
-  "openjdk", "pandas", "postgresql", "prisma", "pytorch", "react", "redis",
+  "openjdk", "pandas", "postgresql", "prisma", "python", "pytorch", "react",
+  "redis",
   "scikitlearn", "snowflake", "spring", "sqlite", "storybook", "supabase",
   "tailwindcss", "tensorflow", "typescript", "vite", "vllm", "vuedotjs",
   "weightsandbiases", "nvidia",
@@ -53,4 +54,17 @@ ${entries}
 `;
 
 writeFileSync(new URL("../lib/tech-icons.ts", import.meta.url), out);
+
+// Guard: a slug referenced by content.ts but absent here renders as the
+// geometric fallback with no error, which is how Python silently lost its
+// logo. Fail the build instead.
+const content = readFileSync(new URL("../lib/content.ts", import.meta.url), "utf8");
+const referenced = [...content.matchAll(/icon:\s*"([a-z0-9]+)"/g)].map((m) => m[1]);
+const uncovered = [...new Set(referenced)].filter((s) => !SLUGS.includes(s));
+if (uncovered.length) {
+  console.error("content.ts references icons not in SLUGS:", uncovered.join(", "));
+  process.exit(1);
+}
+
 console.log(`wrote lib/tech-icons.ts with ${SLUGS.length} icons`);
+console.log(`content.ts references ${new Set(referenced).size} of them, all covered`);

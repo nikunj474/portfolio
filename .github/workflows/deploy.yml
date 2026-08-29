@@ -28,6 +28,11 @@ jobs:
 
       - run: npm ci
 
+      - name: Verify the generated icon set is current
+        run: |
+          npm run icons
+          git diff --exit-code lib/tech-icons.ts
+
       - name: Typecheck
         run: npm run typecheck
 
