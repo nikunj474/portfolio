@@ -54,7 +54,12 @@ jobs:
           test -f out/CNAME || { echo "CNAME missing: the custom domain would drop"; exit 1; }
           test -f out/.nojekyll || { echo ".nojekyll missing: Pages would ignore _next/"; exit 1; }
 
+      # enablement: true flips the repository's Pages source from the legacy
+      # branch build to GitHub Actions on the first run, so merging is the only
+      # manual step. Harmless once it is already set.
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - uses: actions/upload-pages-artifact@v3
         with:
