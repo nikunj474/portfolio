@@ -17,8 +17,9 @@ const SLUGS = [
   "mongodb", "nextdotjs", "nodedotjs", "numpy", "onnx", "openapiinitiative",
   "openjdk", "pandas", "postgresql", "prisma", "python", "pytorch", "react",
   "redis",
-  "scikitlearn", "snowflake", "sqlite", "supabase",
-  "tensorflow", "typescript", "vllm", "nvidia",
+  "scikitlearn", "snowflake",
+  "tailwindcss", "sqlite", "supabase",
+  "tensorflow", "typescript", "vite", "vllm", "nvidia",
 ];
 
 const bySlug = new Map();

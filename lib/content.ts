@@ -115,8 +115,6 @@ export const skills: SkillGroup[] = [
       { name: "Java", icon: "openjdk" },
       { name: "C#", icon: "dotnet" },
       { name: "SQL" },
-      { name: "HTML5", icon: "html5" },
-      { name: "CSS3", icon: "css" },
     ],
   },
   {
@@ -175,6 +173,10 @@ export const skills: SkillGroup[] = [
     items: [
       { name: "React", icon: "react" },
       { name: "Next.js", icon: "nextdotjs" },
+      { name: "Tailwind CSS", icon: "tailwindcss" },
+      { name: "Vite", icon: "vite" },
+      { name: "HTML5", icon: "html5" },
+      { name: "CSS3", icon: "css" },
       { name: "AngularJS", icon: "angular" },
     ],
   },
