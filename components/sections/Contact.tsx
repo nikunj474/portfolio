@@ -13,9 +13,6 @@ export default function Contact({ standalone = false }: { standalone?: boolean }
             Let&rsquo;s build something
             <span className="italic"> that holds up.</span>
           </h3>
-          <p className="mt-6 max-w-prose font-sans text-[0.95rem] leading-relaxed text-charcoal-soft">
-            {contact.line}
-          </p>
         </Reveal>
 
         <div className="lg:col-span-7">

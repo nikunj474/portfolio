@@ -20,7 +20,7 @@ export default function Education({ standalone = false }: { standalone?: boolean
                 <p className="mt-1.5 font-sans text-[0.95rem] font-medium text-charcoal">
                   {e.degree}
                 </p>
-                <p className="meta mt-1.5">{e.meta}</p>
+                {e.meta ? <p className="meta mt-1.5">{e.meta}</p> : null}
 
                 <div className="mt-4 space-y-2">
                   {e.detail.map((d) => (

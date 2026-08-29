@@ -1,4 +1,5 @@
 import Pill from "@/components/Pill";
+import ProjectArt from "@/components/ProjectArt";
 import Reveal from "@/components/Reveal";
 import SectionShell from "@/components/SectionShell";
 import { projects, sections, type Project } from "@/lib/content";
@@ -52,16 +53,26 @@ function Card({ project, n }: { project: Project; n: number }) {
         {project.blurb}
       </p>
 
-      <ul className={featured ? "mt-6 grid gap-3 sm:grid-cols-2" : "mt-6 space-y-3"}>
-        {project.bullets.map((b) => (
-          <li
-            key={b}
-            className="border-l border-charcoal/20 pl-4 font-sans text-[0.875rem] leading-[1.7] text-charcoal-soft"
-          >
-            {b}
-          </li>
-        ))}
-      </ul>
+      {/* Featured cards run three bullets down the left with the artwork
+          holding the fourth slot on the right. */}
+      <div className={featured ? "mt-6 grid gap-8 lg:grid-cols-3" : "mt-6"}>
+        <ul className={featured ? "space-y-3 lg:col-span-2" : "space-y-3"}>
+          {project.bullets.map((b) => (
+            <li
+              key={b}
+              className="border-l border-charcoal/20 pl-4 font-sans text-[0.875rem] leading-[1.7] text-charcoal-soft"
+            >
+              {b}
+            </li>
+          ))}
+        </ul>
+
+        {featured && project.art ? (
+          <div className="hidden lg:block">
+            <ProjectArt variant={project.art} />
+          </div>
+        ) : null}
+      </div>
 
       <div className="mt-auto pt-7">
         <div className="mb-5 flex flex-wrap gap-2">

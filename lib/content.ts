@@ -34,19 +34,14 @@ export const sections: Section[] = [
   { id: "skills", label: "Skills", index: "04", kicker: "Tools of the trade", title: "Skills", href: "/skills" },
   { id: "experience", label: "Experience", index: "05", kicker: "A reverse-chronological tour", title: "Experience", href: "/experience" },
   { id: "portfolio", label: "Portfolio", index: "06", kicker: "Things I have built", title: "Portfolio", href: "/portfolio" },
-  { id: "contact", label: "Contact", index: "07", kicker: "Say something", title: "Contact", href: "/contact" },
+  { id: "contact", label: "Contact", index: "07", kicker: "Let\u2019s connect", title: "Contact", href: "/contact" },
 ];
 
 export const hero = {
   first: "Nikunj",
   last: "Agrawal",
   subtitle: "Software Engineer · AI Systems & Infrastructure",
-  bio: "I build AI-native software: multi-agent orchestration, retrieval systems, and the scalable data pipelines that feed them. Most of my work sits where the model meets the machine, which is usually where things break.",
-  meta: [
-    { label: "Based", value: "New York, NY" },
-    { label: "Degree", value: "MS CS, UPenn" },
-    { label: "Status", value: "Open to roles" },
-  ],
+  bio: "I build AI-native software: multi-agent orchestration, retrieval systems, full-stack applications, workflows, and the scalable data pipelines to feed them. Previously I have worked in product growth strategy, full-stack software development, and forward deployed engineering roles at fast-growing startups, and in customer-facing roles.",
   portrait: {
     src: "/images/nikunj-agrawal.jpg",
     alt: "Portrait of Nikunj Agrawal",
@@ -54,12 +49,9 @@ export const hero = {
 } as const;
 
 export const about = {
-  statement:
-    "I build AI systems, and the infrastructure that has to hold them up. I am picky about both halves.",
+  statement: "I build AI systems, and the infrastructure to hold it.",
   paragraphs: [
-    "Most AI engineering stops at the API call. The part I care about is what sits underneath: how retrieval behaves at ten years of documents instead of ten, what happens when a storage node dies mid-request, why an agent's fourth tool call comes back as nonsense. So my work runs in both directions, from a replicated key-value store written from the socket layer up to multi-agent systems built on the same instinct for what fails.",
     "I finished my Masters in Computer Science at the University of Pennsylvania in May 2026, where I was a teaching assistant for Algorithms and a research assistant at the NSF-funded Center for Engineering Mechanobiology. Before that I shipped a production RAG support system at Darwinbox, an HR SaaS unicorn, built ML pipelines for a $400M Gates Foundation education program at GDi Partners, and wrote Bayesian optimization tooling for a London credit fund.",
-    "I have won the National Hack-AI-thon at IIT Roorkee and the Princeton AI Hackathon, both by building something that ran by the end of the weekend. That is roughly how I like to work.",
   ],
   resume: {
     label: "Read the full resume",
@@ -70,7 +62,7 @@ export const about = {
 export type EducationItem = {
   school: string;
   degree: string;
-  meta: string;
+  meta?: string;
   dates: string;
   detail: string[];
 };
@@ -79,11 +71,10 @@ export const education: EducationItem[] = [
   {
     school: "University of Pennsylvania",
     degree: "Masters in Computer Science",
-    meta: "Philadelphia, PA, USA",
     dates: "Aug 2024 — May 2026",
     detail: [
       "Teaching Assistant, Algorithms. Research Assistant at the Center for Engineering Mechanobiology, funded by the NSF.",
-      "Coursework: Machine Learning, Software (Distributed) Systems, Databases, Cybersecurity, Big Data Analytics, Data Structures and Algorithms.",
+      "Coursework: Machine Learning, Software (Distributed) Systems, Low Level Systems, Databases, Cybersecurity, Big Data Analytics, Data Structures and Algorithms.",
     ],
   },
   {
@@ -92,67 +83,141 @@ export const education: EducationItem[] = [
     meta: "GPA 8.69 / 10 · Top 5%",
     dates: "Jul 2018 — May 2021",
     detail: [
+      "V.K. Bhalla Gold Medal. CFA Level 1.",
       "Computer and Maths Society. President of the National Service Scheme, the largest student-run organisation on campus.",
     ],
   },
 ];
 
+export type Tech = {
+  name: string;
+  /** simple-icons slug. Omitted for concepts that have no brand mark. */
+  icon?: string;
+};
+
 export type SkillGroup = {
   label: string;
-  /** Geometric glyph keyed to the group, rendered inside every pill. */
+  /** Geometric mark used for items in this group that have no logo. */
   glyph: "square" | "circle" | "diamond" | "triangle" | "bars" | "grid" | "arrow";
-  items: string[];
+  items: Tech[];
 };
 
 export const skills: SkillGroup[] = [
   {
     label: "Languages",
     glyph: "square",
-    items: ["Python", "TypeScript", "JavaScript", "C++", "C", "Java", "C#", "SQL", "HTML", "CSS"],
+    items: [
+      { name: "Python", icon: "python" },
+      { name: "TypeScript", icon: "typescript" },
+      { name: "JavaScript", icon: "javascript" },
+      { name: "C++", icon: "cplusplus" },
+      { name: "C", icon: "c" },
+      { name: "Java", icon: "openjdk" },
+      { name: "C#", icon: "dotnet" },
+      { name: "SQL" },
+      { name: "HTML5", icon: "html5" },
+      { name: "CSS3", icon: "css" },
+    ],
   },
   {
     label: "AI & Machine Learning",
     glyph: "circle",
     items: [
-      "PyTorch", "TensorFlow", "HuggingFace Transformers", "Scikit-Learn", "XGBoost",
-      "BoTorch", "ONNX", "LoRA / QLoRA", "RLHF", "SHAP",
+      { name: "PyTorch", icon: "pytorch" },
+      { name: "TensorFlow", icon: "tensorflow" },
+      { name: "Hugging Face", icon: "huggingface" },
+      { name: "scikit-learn", icon: "scikitlearn" },
+      { name: "NumPy", icon: "numpy" },
+      { name: "pandas", icon: "pandas" },
+      { name: "ONNX", icon: "onnx" },
+      { name: "CUDA", icon: "nvidia" },
+      { name: "XGBoost" },
+      { name: "BoTorch" },
+      { name: "LoRA / QLoRA" },
+      { name: "RLHF" },
+      { name: "SHAP" },
     ],
   },
   {
     label: "LLM Systems",
     glyph: "diamond",
     items: [
-      "RAG", "LangChain", "LangGraph", "MCP", "FastMCP", "FAISS", "pgvector",
-      "vLLM", "RAGAS", "Multi-agent orchestration", "Weights & Biases", "MLflow",
+      { name: "LangChain", icon: "langchain" },
+      { name: "LangGraph", icon: "langgraph" },
+      { name: "MCP", icon: "modelcontextprotocol" },
+      { name: "vLLM", icon: "vllm" },
+      { name: "W&B", icon: "weightsandbiases" },
+      { name: "MLflow", icon: "mlflow" },
+      { name: "RAG" },
+      { name: "FastMCP" },
+      { name: "FAISS" },
+      { name: "pgvector" },
+      { name: "RAGAS" },
+      { name: "Multi-Agent" },
     ],
   },
   {
     label: "Backend & APIs",
     glyph: "triangle",
     items: [
-      "FastAPI", "Node.js", "Express", "GraphQL", "REST", "WebSockets",
-      "OpenAPI", "asyncio", "Flask", "Django", "Spring MVC",
+      { name: "FastAPI", icon: "fastapi" },
+      { name: "Node.js", icon: "nodedotjs" },
+      { name: "Express", icon: "express" },
+      { name: "GraphQL", icon: "graphql" },
+      { name: "OpenAPI", icon: "openapiinitiative" },
+      { name: "Flask", icon: "flask" },
+      { name: "Django", icon: "django" },
+      { name: "Spring MVC", icon: "spring" },
+      { name: "REST" },
+      { name: "WebSockets" },
+      { name: "asyncio" },
     ],
   },
   {
     label: "Frontend",
     glyph: "arrow",
-    items: ["React", "Next.js", "Tailwind CSS", "Recharts", "Storybook", "Vue.js", "AngularJS"],
+    items: [
+      { name: "React", icon: "react" },
+      { name: "Next.js", icon: "nextdotjs" },
+      { name: "Tailwind CSS", icon: "tailwindcss" },
+      { name: "Vite", icon: "vite" },
+      { name: "Storybook", icon: "storybook" },
+      { name: "Vue.js", icon: "vuedotjs" },
+      { name: "AngularJS", icon: "angular" },
+      { name: "Recharts" },
+    ],
   },
   {
     label: "Data",
     glyph: "bars",
     items: [
-      "PostgreSQL", "Redis", "MongoDB", "MS SQL Server", "Snowflake",
-      "Databricks", "Kafka", "Tableau", "Power BI",
+      { name: "PostgreSQL", icon: "postgresql" },
+      { name: "Redis", icon: "redis" },
+      { name: "MongoDB", icon: "mongodb" },
+      { name: "SQLite", icon: "sqlite" },
+      { name: "Prisma", icon: "prisma" },
+      { name: "Supabase", icon: "supabase" },
+      { name: "Snowflake", icon: "snowflake" },
+      { name: "Databricks", icon: "databricks" },
+      { name: "Kafka", icon: "apachekafka" },
+      { name: "SQL Server" },
+      { name: "Tableau" },
+      { name: "Power BI" },
     ],
   },
   {
     label: "Infrastructure",
     glyph: "grid",
     items: [
-      "AWS (SageMaker, EC2, S3, RDS)", "Azure", "Docker", "GitHub Actions",
-      "Jenkins", "CI/CD", "Linux", "CUDA",
+      { name: "Docker", icon: "docker" },
+      { name: "GitHub Actions", icon: "githubactions" },
+      { name: "Jenkins", icon: "jenkins" },
+      { name: "Linux", icon: "linux" },
+      { name: "Git", icon: "git" },
+      { name: "Jira", icon: "jira" },
+      { name: "AWS" },
+      { name: "Azure" },
+      { name: "CI/CD" },
     ],
   },
 ];
@@ -227,20 +292,22 @@ export type Project = {
   bullets: string[];
   stack: string[];
   links: { label: string; href: string }[];
-  /** Featured projects render as full-width cards ahead of the grid. */
+  /** Featured projects render as full-width cards with artwork alongside. */
   featured?: boolean;
+  /** Which abstract composition to draw beside a featured card. */
+  art?: "mesh" | "cluster";
 };
 
 export const projects: Project[] = [
   {
     name: "Financial MCP Server",
     featured: true,
+    art: "mesh",
     blurb:
       "An open-source Model Context Protocol server that gives any LLM live, tool-calling access to SEC filings, Federal Reserve series, and market fundamentals.",
     bullets: [
       "Six typed tools across three sources, SEC EDGAR, FRED, and Alpha Vantage, that a model chains on its own: resolve a company to a CIK, pull its filings, then correlate against a macro series, without a human copying anything between tabs.",
-      "Pydantic schemas with strict field validation and tool annotations mean a hallucinated argument is rejected at the boundary rather than becoming a malformed upstream request.",
-      "Async httpx client with typed error handling that converts every upstream failure into a readable string, because an MCP tool cannot raise: the model has no way to catch it.",
+      "Pydantic schemas with strict field validation reject a hallucinated argument at the boundary instead of turning it into a malformed upstream request, and an async httpx layer converts every upstream failure into a readable string, because an MCP tool cannot raise: the model has no way to catch it.",
       "24 tests run with no network access, covering CIK zero-padding, SEC archive URL construction, form-type filtering, and the error contract; CI runs them on Python 3.11, 3.12 and 3.13.",
     ],
     stack: ["Python", "FastMCP", "Pydantic", "httpx", "pytest"],
@@ -249,13 +316,13 @@ export const projects: Project[] = [
   {
     name: "NCloud",
     featured: true,
+    art: "cluster",
     blurb:
       "A fault-tolerant cloud platform, webmail plus drive plus chat, running on a replicated, range-sharded key-value store written from the socket layer up in C++17.",
     bullets: [
       "Roughly 16,000 lines of C++17 across five services with no web framework, no ORM, and no database. The HTTP parser, storage engine, replication protocol, failure detector, leader election, SMTP server, and load balancer are all original code.",
       "Kill a storage node mid-upload and the cluster elects a new primary in about 1.5 seconds, the request still completes, and the dead node resyncs when it returns. There is a kill button for every node in the admin console.",
-      "Storage engine with a write-ahead log, checkpoints, and bloom filters; primary-backup replication sequenced by log sequence numbers with quorum acknowledgement; coordinator heartbeats every 500ms and elects on highest LSN.",
-      "Built by a team of five for CIS 5050. I owned the storage layer: the key-value server and its tablet engine, replication wiring across multi-tablet groups, primary-backup sequencing, and coordinator failover.",
+      "Underneath: a write-ahead log with checkpoints and bloom filters, primary-backup replication sequenced by log sequence numbers with quorum acknowledgement, and a coordinator that heartbeats every 500ms and elects on the highest LSN. Built by a team of five for CIS 5050; I owned the storage layer, the replication wiring across multi-tablet groups, and coordinator failover.",
     ],
     stack: ["C++17", "Distributed systems", "Replication", "SMTP", "Docker", "AWS"],
     links: [{ label: "GitHub", href: "https://github.com/nikunj474/ncloud" }],
@@ -335,12 +402,10 @@ export const projects: Project[] = [
 ];
 
 export const contact = {
-  line: "I am open to software, AI, and infrastructure roles. The fastest way to reach me is email.",
   links: [
     { label: "Email", value: "nikunjag24@gmail.com", href: "mailto:nikunjag24@gmail.com" },
     { label: "GitHub", value: "github.com/nikunj474", href: "https://github.com/nikunj474" },
     { label: "LinkedIn", value: "linkedin.com/in/nikunj3", href: "https://linkedin.com/in/nikunj3" },
     { label: "Resume", value: "Download PDF", href: "/assets/nikunj-agrawal-resume.pdf" },
   ],
-  note: "No sponsorship needed.",
 } as const;

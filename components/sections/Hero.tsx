@@ -10,10 +10,7 @@ export default function Hero() {
         {/* Left: the name at display scale, then the sub-headline and bio. */}
         <div className="lg:col-span-7">
           <Reveal>
-            <p className="meta mb-8 flex items-center gap-3">
-              <span className="dot" />
-              Portfolio · v2 · 2026
-            </p>
+            <p className="meta mb-8">Portfolio · v2 · 2026</p>
           </Reveal>
 
           <Reveal step={1}>
@@ -70,16 +67,6 @@ export default function Hero() {
             </div>
           </Reveal>
 
-          <Reveal step={3}>
-            <dl className="mt-6 divide-y divide-charcoal/20 border-y border-charcoal/20">
-              {hero.meta.map((m) => (
-                <div key={m.label} className="flex items-baseline justify-between gap-4 py-3">
-                  <dt className="meta">{m.label}</dt>
-                  <dd className="font-mono text-meta-lg uppercase text-charcoal">{m.value}</dd>
-                </div>
-              ))}
-            </dl>
-          </Reveal>
         </div>
       </div>
     </section>
