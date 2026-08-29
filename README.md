@@ -1,103 +1,63 @@
-# Nikunj Agrawal — Portfolio
+# nikunj-agrawal.com
 
-A personal portfolio website built with vanilla HTML, CSS, and JavaScript. Hosted on GitHub Pages.
+Personal site for Nikunj Agrawal. Next.js App Router, statically exported and
+served by GitHub Pages at [nikunj-agrawal.com](https://nikunj-agrawal.com).
 
-🔗 **Live site:** [nikunj474.github.io/portfolio](https://nikunj474.github.io/portfolio/)
+## Design
 
----
+Editorial neo-brutalism: a warm cream ground under a 45-degree hatch, charcoal
+text, and terracotta reserved for exactly two jobs, accent dots and the active
+nav underline. Three typefaces, each with one role: Cormorant Garamond for
+display, Inter for prose and UI, JetBrains Mono for all metadata, which is
+always uppercase and widely tracked. Sections are separated by single 1px rules
+rather than shadows or rounded cards, so the page reads as a wireframe.
 
-## About
+The Tailwind palette is replaced rather than extended, so a stray `slate-500`
+fails the build instead of quietly shipping.
 
-This portfolio showcases my background as an MS in CS student at the University of Pennsylvania, with experience spanning AI/ML engineering, product management, and data analytics across enterprise SaaS, government consulting, and academic research.
+## Structure
 
----
-
-## Features
-
-- **Config-driven content** — all text (bio, experience, projects, education, skills) lives in `js/portfolio.config.js`, making updates simple without touching HTML
-- **Pastel orange theme** — warm, professional color palette with light/dark mode toggle
-- **Responsive design** — works across desktop, tablet, and mobile
-- **Smooth animations** — scroll-triggered reveals, hover effects, and transitions
-- **Sections:** Hero · About · Experience · Projects · Education · Skills · Contact
-
----
-
-## Tech Stack
-
-| Layer | Technology |
-|-------|-----------|
-| Markup | HTML5 |
-| Styling | CSS3 (custom properties, CSS variables) |
-| Logic | Vanilla JavaScript (ES6+) |
-| Fonts | DM Sans · Fraunces (Google Fonts) |
-| Hosting | GitHub Pages |
-
----
-
-## Project Structure
+Every section exists twice: stacked on `/` as one scrolling page, and again at
+its own route. Both render the identical component, and the nav resolves its
+active state from the scroll position on `/` and from the pathname elsewhere.
 
 ```
-portfolio/
-├── index.html              # Main HTML shell
-├── css/
-│   └── styles.css          # All styles + theme tokens
-├── js/
-│   ├── portfolio.config.js # All content (edit this to update the site)
-│   └── main.js             # Rendering logic
-├── assets/
-│   └── nikunj-agrawal-resume.pdf
-└── images/
-    └── Nikunj_Formal_photo.JPG
+app/
+  layout.tsx          fonts, nav, footer, metadata
+  page.tsx            the index: all sections stacked
+  <section>/page.tsx  the same section, standalone
+components/
+  sections/           Hero, About, Education, Skills, Experience, Portfolio, Contact
+  Nav, Reveal, Pill, Glyph, SectionShell, PageHeader, Footer
+lib/content.ts        every word on the site, in one typed module
 ```
 
----
+To change copy, edit `lib/content.ts`. Nothing else hardcodes text.
 
-## Getting Started
-
-No build tools or dependencies required.
+## Local development
 
 ```bash
-# Clone the repo
-git clone https://github.com/nikunj474/portfolio.git
-
-# Open locally
-cd portfolio
-open index.html
+npm install
+npm run dev          # http://localhost:3000
 ```
-
-Or simply serve with any static file server:
 
 ```bash
-npx serve .
+npm run typecheck
+npm run lint
+npm run build        # static export to out/
 ```
 
----
+## Deployment
 
-## Updating Content
+Pushing to `main` runs `.github/workflows/deploy.yml`: typecheck, lint, build,
+then a check that every route, the CNAME, and `.nojekyll` are present in `out/`
+before publishing to Pages.
 
-All site content is managed in a single file:
+The repository's Pages source must be set to **GitHub Actions**
+(Settings, then Pages, then Build and deployment) rather than "Deploy from a
+branch". `public/CNAME` keeps the custom domain attached through each deploy,
+and `public/.nojekyll` stops Pages from discarding the `_next/` directory.
 
-```
-js/portfolio.config.js
-```
+## Licence
 
-Edit the `window.PORTFOLIO` object to update:
-- **Hero** — headline, bio, and action buttons
-- **About** — bio paragraphs
-- **Experience** — job titles, companies, dates, and bullet points
-- **Projects** — titles, tags, descriptions, and GitHub links
-- **Education** — degrees, institutions, and highlights
-- **Skills** — grouped skill chips
-- **Contact** — email, phone, and social links
-
----
-
-## Contact
-
-- **Email:** [nikunj@seas.upenn.edu](mailto:nikunj@seas.upenn.edu)
-- **LinkedIn:** [linkedin.com/in/nikunj3](https://www.linkedin.com/in/nikunj3/)
-- **GitHub:** [github.com/nikunj474](https://github.com/nikunj474)
-
----
-
-*© 2026 Nikunj Agrawal*
+MIT. See [LICENSE](LICENSE).
