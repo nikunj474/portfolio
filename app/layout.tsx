@@ -39,12 +39,13 @@ export const metadata: Metadata = {
     url: site.url,
     siteName: site.name,
     type: "website",
-    images: [{ url: "/images/nikunj-agrawal.jpg", width: 1200, height: 1500 }],
+    images: [{ url: "/images/og.jpg", width: 1200, height: 630, alt: site.name }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${site.name} — ${site.role}`,
     description: site.description,
+    images: ["/images/og.jpg"],
   },
   alternates: { canonical: "/" },
 };
