@@ -43,9 +43,12 @@ export default function Nav() {
     return () => observer.disconnect();
   }, [isHome]);
 
+  // trailingSlash is on, so usePathname() returns "/about/" while hrefs are
+  // written "/about". Compare both sides stripped.
+  const strip = (p: string) => (p.length > 1 ? p.replace(/\/+$/, "") : p);
   const activeId = isHome
     ? visible
-    : sections.find((s) => s.href === pathname || s.href === `${pathname}/`)?.id;
+    : sections.find((s) => strip(s.href) === strip(pathname))?.id;
 
   return (
     <header className="sticky top-0 z-50 border-b border-charcoal bg-cream/92 backdrop-blur-sm">
