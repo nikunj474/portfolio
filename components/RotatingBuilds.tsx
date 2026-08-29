@@ -39,7 +39,7 @@ export default function RotatingBuilds() {
   const current = hero.builds[i];
 
   return (
-    <div className="mt-8">
+    <div className="mt-10">
       <p className="meta mb-4">I build</p>
 
       {/* The row is height-reserved for two lines of the largest phrase, so

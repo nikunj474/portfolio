@@ -7,7 +7,7 @@ export default function Hero() {
   return (
     <section id="index" className="scroll-mt-nav">
       <div className="shell grid gap-12 py-16 sm:py-20 lg:grid-cols-12 lg:items-center lg:gap-14 lg:py-24">
-        {/* Left: the name at display scale, the role line, then the rotating list. */}
+        {/* Left: the name at display scale, then the rotating list. */}
         <div className="lg:col-span-7">
           <Reveal>
             <p className="meta mb-8">Portfolio · v2 · 2026</p>
@@ -21,12 +21,6 @@ export default function Hero() {
           </Reveal>
 
           <Reveal step={2}>
-            <p className="mt-8 max-w-prose border-l-2 border-terracotta pl-4 font-sans text-base font-medium leading-snug text-charcoal sm:text-lg">
-              {hero.subtitle}
-            </p>
-          </Reveal>
-
-          <Reveal step={3}>
             <RotatingBuilds />
           </Reveal>
         </div>

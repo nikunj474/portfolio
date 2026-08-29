@@ -40,7 +40,6 @@ export const sections: Section[] = [
 export const hero = {
   first: "Nikunj",
   last: "Agrawal",
-  subtitle: "Software Engineer · AI Systems & Infrastructure",
   /** Cycled one at a time under the name, each with its own mark. */
   builds: [
     { label: "AI agents", mark: "agent" },
