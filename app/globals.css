@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --hatch-line: rgba(26, 26, 26, 0.045);
+    --hatch-gap: 7px;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Anchored sections must clear the sticky nav. */
+    scroll-padding-top: theme("spacing.nav");
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-cream text-charcoal font-sans antialiased;
+    /* The hatch: two 45-degree rules per tile. A single repeating gradient
+       gives one line per period; layering a second at 135 degrees would make a
+       crosshatch, which reads as noise at this opacity. One direction only. */
+    background-image: repeating-linear-gradient(
+      45deg,
+      var(--hatch-line) 0,
+      var(--hatch-line) 1px,
+      transparent 1px,
+      transparent var(--hatch-gap)
+    );
+    background-attachment: fixed;
+  }
+
+  /* Respect the OS setting: no parallax, no reveal transitions. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+
+  ::selection {
+    background: #d9534f;
+    color: #f0ebe1;
+  }
+
+  :focus-visible {
+    outline: 2px solid #d9534f;
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  /* Monospace metadata: section kickers, nav links, tags, timeline dates. */
+  .meta {
+    @apply font-mono text-meta uppercase text-charcoal-mute;
+  }
+
+  /* The architectural shell. Sections butt against each other with a single
+     shared 1px rule, so borders are declared on one edge only. */
+  .shell {
+    @apply mx-auto w-full max-w-shell px-6 sm:px-8 lg:px-12;
+  }
+
+  .rule-t {
+    @apply border-t border-charcoal;
+  }
+
+  .rule-b {
+    @apply border-b border-charcoal;
+  }
+
+  /* Outlined pill used for every technology tag. */
+  .pill {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-charcoal/35
+           px-3 py-1 font-mono text-[0.6875rem] uppercase tracking-[0.12em]
+           text-charcoal-soft transition-colors duration-200 ease-editorial;
+  }
+
+  .pill:hover {
+    @apply border-terracotta bg-terracotta-wash text-charcoal;
+  }
+
+  /* Terracotta dot that precedes every section kicker. */
+  .dot {
+    @apply inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-terracotta;
+  }
+
+  .link-underline {
+    @apply relative inline-block after:absolute after:bottom-[-2px] after:left-0
+           after:h-px after:w-0 after:bg-terracotta after:transition-all
+           after:duration-300 after:ease-editorial hover:after:w-full;
+  }
+}
