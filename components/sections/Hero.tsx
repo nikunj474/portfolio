@@ -1,13 +1,13 @@
 import Image from "next/image";
-import Link from "next/link";
 import Reveal from "@/components/Reveal";
-import { about, hero } from "@/lib/content";
+import RotatingBuilds from "@/components/RotatingBuilds";
+import { hero } from "@/lib/content";
 
 export default function Hero() {
   return (
     <section id="index" className="scroll-mt-nav">
       <div className="shell grid gap-12 py-16 sm:py-20 lg:grid-cols-12 lg:gap-14 lg:py-24">
-        {/* Left: the name at display scale, then the sub-headline and bio. */}
+        {/* Left: the name at display scale, the role line, then the rotating list. */}
         <div className="lg:col-span-7">
           <Reveal>
             <p className="meta mb-8">Portfolio · v2 · 2026</p>
@@ -27,30 +27,11 @@ export default function Hero() {
           </Reveal>
 
           <Reveal step={3}>
-            <p className="mt-6 max-w-prose font-serif text-lg italic leading-relaxed text-charcoal-soft sm:text-xl">
-              {hero.bio}
-            </p>
-          </Reveal>
-
-          <Reveal step={4}>
-            <div className="mt-10 flex flex-wrap items-center gap-4">
-              <Link
-                href="/portfolio"
-                className="border border-charcoal bg-charcoal px-5 py-2.5 font-mono text-meta uppercase text-cream transition-colors duration-200 ease-editorial hover:bg-terracotta hover:border-terracotta"
-              >
-                See the work
-              </Link>
-              <a
-                href={about.resume.href}
-                className="border border-charcoal px-5 py-2.5 font-mono text-meta uppercase text-charcoal transition-colors duration-200 ease-editorial hover:bg-charcoal hover:text-cream"
-              >
-                Resume ↓
-              </a>
-            </div>
+            <RotatingBuilds />
           </Reveal>
         </div>
 
-        {/* Right: portrait in a thin rule, with the metadata block beneath. */}
+        {/* Right: portrait in a thin rule. */}
         <div className="lg:col-span-5">
           <Reveal step={2}>
             <div className="border border-charcoal bg-cream-pale p-2">
@@ -66,7 +47,6 @@ export default function Hero() {
               </div>
             </div>
           </Reveal>
-
         </div>
       </div>
     </section>

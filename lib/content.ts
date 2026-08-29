@@ -41,7 +41,17 @@ export const hero = {
   first: "Nikunj",
   last: "Agrawal",
   subtitle: "Software Engineer · AI Systems & Infrastructure",
-  bio: "I build AI-native software: multi-agent orchestration, retrieval systems, full-stack applications, workflows, and the scalable data pipelines to feed them. Previously I have worked in product growth strategy, full-stack software development, and forward deployed engineering roles at fast-growing startups, and in customer-facing roles.",
+  /** Cycled one at a time under the name, each with its own mark. */
+  builds: [
+    { label: "AI agents", mark: "agent" },
+    { label: "Multi-agent orchestration systems", mark: "orchestration" },
+    { label: "RAG systems", mark: "rag" },
+    { label: "Full-stack applications", mark: "fullstack" },
+    { label: "Automated workflows", mark: "workflow" },
+    { label: "AI-native software architecture", mark: "architecture" },
+    { label: "Scalable data pipelines", mark: "pipeline" },
+    { label: "Low-level design systems (C++/CUDA)", mark: "lowlevel" },
+  ],
   portrait: {
     src: "/images/nikunj-agrawal.jpg",
     alt: "Portrait of Nikunj Agrawal",
