@@ -6,7 +6,7 @@ import { hero } from "@/lib/content";
 export default function Hero() {
   return (
     <section id="index" className="scroll-mt-nav">
-      <div className="shell grid gap-12 py-16 sm:py-20 lg:grid-cols-12 lg:gap-14 lg:py-24">
+      <div className="shell grid gap-12 py-16 sm:py-20 lg:grid-cols-12 lg:items-center lg:gap-14 lg:py-24">
         {/* Left: the name at display scale, the role line, then the rotating list. */}
         <div className="lg:col-span-7">
           <Reveal>
