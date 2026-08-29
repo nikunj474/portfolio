@@ -15,9 +15,12 @@ export default function About({ standalone = false }: { standalone?: boolean }) 
         </Reveal>
 
         <div className="lg:col-span-7">
+          {/* Spacing lives on the Reveal wrappers, which are siblings. Putting
+              last:mb-0 on the paragraph matched every one of them, since each
+              paragraph is an only child of its own wrapper. */}
           {about.paragraphs.map((p, i) => (
-            <Reveal key={i} step={i + 1}>
-              <p className="mb-5 font-sans text-[0.975rem] leading-[1.75] text-charcoal-soft last:mb-0">
+            <Reveal key={i} step={i + 1} className="mb-6 last:mb-0">
+              <p className="font-sans text-[0.975rem] leading-[1.75] text-charcoal-soft">
                 {p}
               </p>
             </Reveal>
