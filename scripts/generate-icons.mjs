@@ -11,16 +11,14 @@ import * as si from "simple-icons";
 
 // Every slug referenced by lib/content.ts. Keep sorted.
 const SLUGS = [
-  "angular", "apachekafka", "c", "cplusplus", "css", "databricks", "django",
-  "docker", "dotnet", "express", "fastapi", "flask", "git", "githubactions",
+  "angular", "apachekafka", "c", "cplusplus", "css", "databricks", "docker", "dotnet", "express", "fastapi", "flask", "git", "githubactions",
   "graphql", "html5", "huggingface", "javascript", "jenkins", "jira",
   "langchain", "langgraph", "linux", "mlflow", "modelcontextprotocol",
   "mongodb", "nextdotjs", "nodedotjs", "numpy", "onnx", "openapiinitiative",
   "openjdk", "pandas", "postgresql", "prisma", "python", "pytorch", "react",
   "redis",
-  "scikitlearn", "snowflake", "spring", "sqlite", "storybook", "supabase",
-  "tailwindcss", "tensorflow", "typescript", "vite", "vllm", "vuedotjs",
-  "weightsandbiases", "nvidia",
+  "scikitlearn", "snowflake", "sqlite", "supabase",
+  "tensorflow", "typescript", "vllm", "nvidia",
 ];
 
 const bySlug = new Map();
