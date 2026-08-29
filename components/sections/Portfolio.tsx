@@ -55,8 +55,14 @@ function Card({ project, n }: { project: Project; n: number }) {
 
       {/* Featured cards run three bullets down the left with the artwork
           holding the fourth slot on the right. */}
-      <div className={featured ? "mt-6 grid gap-8 lg:grid-cols-3" : "mt-6"}>
-        <ul className={featured ? "space-y-3 lg:col-span-2" : "space-y-3"}>
+      <div
+        className={
+          featured
+            ? "mt-6 grid gap-8 lg:grid-cols-[minmax(0,1fr)_240px]"
+            : "mt-6"
+        }
+      >
+        <ul className="space-y-3">
           {project.bullets.map((b) => (
             <li
               key={b}
@@ -68,7 +74,9 @@ function Card({ project, n }: { project: Project; n: number }) {
         </ul>
 
         {featured && project.art ? (
-          <div className="hidden lg:block">
+          // A fixed 240px column: left to stretch, the SVG's 200x260 ratio
+          // would set the row height and strand whitespace beside the bullets.
+          <div className="hidden self-start lg:block">
             <ProjectArt variant={project.art} />
           </div>
         ) : null}
